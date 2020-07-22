@@ -27,8 +27,11 @@ class Account {
 		return holderName;
 	}
 	
-	void setHolderName(String holderName) {
-		this.holderName=holderName;
+	// Account account3=new Account();
+	// account3.setHolderName("praneeth");
+	// this and account3 are same thing
+	void setHolderName(String holderName) {	
+	this.holderName=holderName;
 	}
 	
 	double getBalance() {

@@ -6,6 +6,7 @@ public class AccountMain {
 	 Account account2=new Account("prasanna",300,21);
 	 Account account3=new Account("naveen",500);
 	 account3.setAge(21);
+	 account3.setHolderName("praneeth");
 	 Account store[]=new Account[3];
 	 store[0]=account1;
 	 store[1]=account2;	 
