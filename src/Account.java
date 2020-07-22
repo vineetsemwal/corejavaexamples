@@ -9,11 +9,18 @@ class Account {
 		this.holderName=holderName;
 		this.balance=balance;
 		this.age=age;		
+		System.out.println("inside 3 args constructor");
 	}
+	
+	Account(String holderName,double balance){
+		this(holderName, balance,21);
+		System.out.println("inside 2 args constructor");		
+	}
+	
 	
 	Account(){
 		this("",100,21);
-          
+        System.out.println("inside zero arg constructor");  
 	}
 	
 	String getHolderName() {

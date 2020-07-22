@@ -4,10 +4,8 @@ public class AccountMain {
 	public static void main(String[]args) {
 	 Account account1=new Account("praneeth",200,21);	
 	 Account account2=new Account("prasanna",300,21);
-	 Account account3=new Account();
+	 Account account3=new Account("naveen",500);
 	 account3.setAge(21);
-	 account3.setHolderName("naveen");
-	 account3.setBalance(500);
 	 Account store[]=new Account[3];
 	 store[0]=account1;
 	 store[1]=account2;	 
