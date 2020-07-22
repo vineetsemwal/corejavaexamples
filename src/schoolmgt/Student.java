@@ -18,7 +18,7 @@ class Student {
 	}
 	
 	
-	Student(String name,int age, boolean placed){
+	Student(String name, int age, boolean placed){
 		this(name, age);
 		this.placed=placed;
 	}
