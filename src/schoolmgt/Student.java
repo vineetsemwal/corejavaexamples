@@ -1,3 +1,5 @@
+package schoolmgt;
+
 class Student {
 	
 	String name;//default to null

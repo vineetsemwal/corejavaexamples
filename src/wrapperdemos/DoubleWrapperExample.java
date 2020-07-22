@@ -1,4 +1,4 @@
-package demos;
+package wrapperdemos;
 
 public class DoubleWrapperExample {
 
