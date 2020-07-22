@@ -1,5 +1,5 @@
 
-public class BooleanWrapper {
+public class BooleanWrapperExample {
 
 	public static void main(String[]args) {		
 		boolean bool=false;// primitive

@@ -10,9 +10,7 @@
  */
 public class IntegerWrapperExample {
 
-	public static void main(String args[]) {
-		
-			
+	public static void main(String args[]) {				
 		// int is primitive type
 		int i1=10;		// 4 byte , 32 bits
 		// Integer is wrapper class, advantage of wrapper class is we can reuse 
@@ -27,9 +25,7 @@ public class IntegerWrapperExample {
 		
 		System.out.println("integer="+i2);
 		System.out.println("string="+str);
-		System.out.println("double="+doubleValue);
-		
-		
+		System.out.println("double="+doubleValue);	
 		
 	}
 	
