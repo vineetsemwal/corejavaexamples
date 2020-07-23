@@ -7,7 +7,7 @@ package schoolmgt;
  * 2) you can call constructor of immediate base class
  *
  */
-class ComputerScienceStudent extends Student {
+public class ComputerScienceStudent extends Student {
 
 	private String laptopAlloted;
 

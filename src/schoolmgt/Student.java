@@ -6,9 +6,10 @@ package schoolmgt;
  * what can we do with this keyword
  * 1) we can address members(fields+ methods) of the same object
  *  2) with this we can call constructor of object of same class
+ *  
+ *  
  */
 public class Student {
-	
 	private String name;//default to null
 	private int age;//default to 0 
 	private boolean placed;//default to false

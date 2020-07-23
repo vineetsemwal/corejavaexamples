@@ -1,4 +1,8 @@
-package schoolmgt;
+package schoolmgt.ui;
+
+import schoolmgt.Student;
+import schoolmgt.ElectronicsStudent;
+import schoolmgt.ComputerScienceStudent;
 
 public class StudentMain {
 
