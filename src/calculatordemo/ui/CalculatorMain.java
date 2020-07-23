@@ -21,7 +21,8 @@ public class CalculatorMain {
 		ICalculator calculator=new ScientificCalculator();
 		int addResult=calculator.add(1,2);
 		int subResult=calculator.sub(10, 3);
-		
+		System.out.println("add result="+addResult);
+		System.out.println("sub result="+subResult);
 		
 	}
 	
