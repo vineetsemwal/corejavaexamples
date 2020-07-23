@@ -2,6 +2,11 @@ package overridedemo;
 
 public class Car extends Vehicle{
 
+	
+	public Car(String numberPlate) {
+		super(numberPlate);
+	}
+	
 	/**
 	 * For overriding there are 2 conditions
 	 * 1) the signature of method in Subclass has to be exactly same as base class
@@ -9,7 +14,7 @@ public class Car extends Vehicle{
 	 *  we can widen/increase it
 	 */
 	@Override
-	 void move() {
+	 public void move() {
 	 System.out.println("car moves");	
 	}
 }
