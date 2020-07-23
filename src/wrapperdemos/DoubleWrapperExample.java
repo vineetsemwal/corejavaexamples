@@ -3,7 +3,7 @@ package wrapperdemos;
 public class DoubleWrapperExample {
 
 	public static void main(String[]args) {
-	Double wrapper=new Double(10.2);
+	Double wrapper=new Double(10.2);// prmitive double value + commonly used methods for double
 	double convertedToPrimitive=wrapper.doubleValue();
     wrapper=11.3;
     // wrapper=new Double(11.3);

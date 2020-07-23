@@ -1,10 +1,10 @@
 package schoolmgt;
 
-class ElectronicsStudent extends Student{
+public class ElectronicsStudent extends Student{
 
-	String gadgetAlloted;
+	private String gadgetAlloted;
 	
-	ElectronicsStudent(String name,int age, boolean placed, String gadget)
+	public ElectronicsStudent(String name,int age, boolean placed, String gadget)
 	{
 		super(name,age,placed);
 		this.gadgetAlloted=gadget;

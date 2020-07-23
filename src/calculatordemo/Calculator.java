@@ -10,9 +10,9 @@ package calculatordemo;
  */
 public class Calculator {	
 	
-	 int integerResult;
+	private int integerResult;
 	
-	int getIntegerResult() {
+	public int getIntegerResult() {
 		return integerResult;
 	}
 	
@@ -21,25 +21,26 @@ public class Calculator {
 	 * 
 	 * compiler will know these three methods are different from number of args or type of args
 	 */
-	int add(int num1, int num2) {		
+	public int add(int num1, int num2) {		
 	   int 	result=num1+num2; 
 	   return result;
 	}
 	
-	
-	int add(int num1, int num2, int num3) {
-	  int result=add(num1,num2);
+	/// Calculator c=new Calculator();
+	// int op=c.add(1,2,3);
+	public int add(int num1, int num2, int num3) {
+	  int result= this.add(num1,num2); 
 	  result=result+num3;
 	  return result;
 	}
 	
 
-	double add(double num1, double num2) {		
+	public double add(double num1, double num2) {		
 	   double result=num1+num2; 
 	   return result;
 	}
 	
-	String add(String arg1, String arg2) {
+	public String add(String arg1, String arg2) {
 		String result=arg1+arg2;
 		return result;
 	}

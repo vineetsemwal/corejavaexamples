@@ -1,6 +1,6 @@
 package schoolmgt;
 
-class StudentMain {
+public class StudentMain {
 
 	public static void main(String[] args) {
 		Student students[] = new Student[4];
@@ -18,6 +18,7 @@ class StudentMain {
 		for (int i = 0; i < students.length; i++) {
 			Student current = students[i];
 			String name = current.getName();
+			
 			int age = current.getAge();
 			boolean placed = current.getPlaced();
 			System.out.println("name is " + name + " age is " + age + " is placed " + placed);

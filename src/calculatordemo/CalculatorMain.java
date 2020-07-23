@@ -1,5 +1,7 @@
 package calculatordemo;
 
+import schoolmgt.Student;
+
 /**
  * 
  * Main class , it's only purpose is to provide main method
@@ -22,6 +24,8 @@ public class CalculatorMain {
         System.out.println("double add result="+doubleResult);
         System.out.println("string concat result="+stringResult);
         
+        Student student=new Student("pradeep",21,true);
+        student.getAge();
 	}
 	
 }
