@@ -1,5 +1,6 @@
-package calculatordemo;
+package calculatordemo.ui;
 
+import calculatordemo.Calculator;
 import schoolmgt.Student;
 
 /**
