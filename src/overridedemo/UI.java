@@ -9,14 +9,15 @@ public class UI {
 		//
 		//
 		Vehicle car=new Car("c11");
-		car.move();
-		String carNumber=car.getNumberPlate();
-		System.out.println("car number="+carNumber);
-	
 		Vehicle bike=new Bike("b11");
-		bike.move();
-		String bikeNumber=bike.getNumberPlate();
-		System.out.println("bike number="+bikeNumber);
+		Vehicle vehicles[]=new Vehicle[2];
+		vehicles[0]=car;
+		vehicles[1]=bike;
+		for(Vehicle vehicle:vehicles) {
+		String number=vehicle.getNumberPlate();
+		vehicle.move();
+		System.out.println("vehicle number="+number);
+		}
 	
 	}
 	
