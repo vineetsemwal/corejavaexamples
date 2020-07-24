@@ -13,14 +13,14 @@ public class CustomCheckedExceptionDemo {
 
 	public void display(Product product) {
 		if (product == null) {
-			try {
+			//try {
 				InvalidArgumentCheckedException exception = new InvalidArgumentCheckedException("invalid argument");
 				throw exception;
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("product is null so no information to display");
-				return;
-			}
+			//} catch (Exception e) {
+				//e.printStackTrace();
+			//	System.out.println("product is null so no information to display");
+				//return;
+			//}
 		}
 		String id = product.getId();
 		String name = product.getName();
