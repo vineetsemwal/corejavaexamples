@@ -1,10 +1,10 @@
 package exceptiondemos;
 
-public class CustomCheckedExceptionDemo {
+public class CustomUncheckedExceptionDemo {
 
 	public static void main(String[] args) {
 
-		CustomCheckedExceptionDemo demo = new CustomCheckedExceptionDemo();
+		CustomUncheckedExceptionDemo demo = new CustomUncheckedExceptionDemo();
 		Product product = null;
 		demo.display(product);
 		System.out.println("bye bye");
@@ -13,14 +13,9 @@ public class CustomCheckedExceptionDemo {
 
 	public void display(Product product) {
 		if (product == null) {
-			try {
-				InvalidArgumentCheckedException exception = new InvalidArgumentCheckedException("invalid argument");
+				InvalidArgUncheckException exception = new InvalidArgUncheckException("invalid argument");
 				throw exception;
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("product is null so no information to display");
-				return;
-			}
+				//compiler not forcing us to handle exception 
 		}
 		String id = product.getId();
 		String name = product.getName();
