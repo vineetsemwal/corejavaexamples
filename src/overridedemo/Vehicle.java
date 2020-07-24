@@ -19,7 +19,7 @@ abstract public class Vehicle {
  * but we don't have complete information about how it should move,
  *  it can move like a bike or a car or anything else	
  */
-  public abstract void move() ;
+  public  abstract void move() ;
   
   
   
