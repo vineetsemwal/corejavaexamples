@@ -13,13 +13,16 @@ public class NullPointerExample {
 		//
 		// exception occured on the below line when program was getting executed
 		// exception caused the progam to exit
-	//	try {
+		try{
 			String id = product.getId();
 			String name = product.getName();
 			System.out.println("product =" + id + " " + name);
-		//} catch (NullPointerException e) {
-	//		System.out.println("exception occured, product is null");
-		//}
+		} 
+		//catch will only be executed when there is an exception
+		catch (Throwable exception) {
+			//exception.printStackTrace();
+			System.out.println("exception occured, product is null");
+		}
 
 		System.out.println("inside display method, after  product info");
 	}
