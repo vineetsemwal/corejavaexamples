@@ -6,21 +6,19 @@ public class CustomCheckedExceptionDemo {
 
 		CustomCheckedExceptionDemo demo = new CustomCheckedExceptionDemo();
 		Product product = null;
+		try {
 		demo.display(product);
+		}catch(InvalidArgumentCheckedException e) {
+			System.out.println("invalid argument, product is null");
+		}
 		System.out.println("bye bye");
 
 	}
 
-	public void display(Product product) {
+	public void display(Product product) throws InvalidArgumentCheckedException{
 		if (product == null) {
-			try {
 				InvalidArgumentCheckedException exception = new InvalidArgumentCheckedException("invalid argument");
-				throw exception;
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("product is null so no information to display");
-				return;
-			}
+				throw exception;			
 		}
 		String id = product.getId();
 		String name = product.getName();
