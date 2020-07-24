@@ -2,15 +2,11 @@ package exceptiondemos;
 
 public class CustomCheckedExceptionDemo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)throws InvalidArgumentCheckedException {
 
 		CustomCheckedExceptionDemo demo = new CustomCheckedExceptionDemo();
 		Product product = null;
-		try {
 		demo.display(product);
-		}catch(InvalidArgumentCheckedException e) {
-			System.out.println("invalid argument, product is null");
-		}
 		System.out.println("bye bye");
 
 	}
