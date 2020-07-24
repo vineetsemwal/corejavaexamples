@@ -3,7 +3,7 @@ package exceptiondemos;
 public class HandleMoreThanOne {
 
     public static void main(String[]args){
-        MoreThanOnExceptionDemo demo=new MoreThanOnExceptionDemo();
+        HandleMoreThanOne demo=new HandleMoreThanOne();
         demo.display(1);
 
     }
