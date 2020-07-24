@@ -9,7 +9,7 @@ package schoolmgt;
  *  
  *  
  */
-public class Student {
+public class Student{
 	private String name;//default to null
 	private int age;//default to 0 
 	private boolean placed;//default to false
@@ -65,6 +65,12 @@ public class Student {
 	
 	public void setPlaced(boolean placed) {
 		this.placed=placed;
+	}
+	
+	@Override
+	public String toString() {
+		String str=name+" "+ age+" "+placed;
+		return str;
 	}
 		
 }

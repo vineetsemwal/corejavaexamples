@@ -13,7 +13,7 @@ public class StudentMain {
 		ComputerScienceStudent student2 = new ComputerScienceStudent("balakrishna", 21, true, "dell");
 		ComputerScienceStudent student3 = new ComputerScienceStudent("prasanna", 22, true, "asus");
 		ElectronicsStudent student4 = new ElectronicsStudent("saiteja", 22, true, "diode");
-
+       
 		students[0] = student1;
 		students[1] = student2;
 		students[2] = student3;
@@ -38,6 +38,7 @@ public class StudentMain {
 				System.out.println("gadget available=" + es.getGadgetAlloted());
 			}
 
+				
 		}
 
 	}
