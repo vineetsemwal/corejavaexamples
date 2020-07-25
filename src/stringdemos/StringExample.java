@@ -27,7 +27,8 @@ public class StringExample {
 		int indexOf=str1.indexOf("ra");
 		System.out.println("ra found at index="+indexOf);
 		
-		
+		String changedObject=str1.replace("ra", "rey");
+	    System.out.println("changed object="+changedObject);
 	}
 	
 }
