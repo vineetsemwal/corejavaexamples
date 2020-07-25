@@ -7,7 +7,7 @@ import equalshash.Trainee;
 public class SetExample {
 
 	public static void main(String[]args) {
-		Set set=new HashSet();
+		Set set=new LinkedHashSet();
 		Trainee trainee1=new Trainee(10, "prakash");
 		set.add(trainee1);// adding element at the end
 		Trainee trainee2=new Trainee(11, "pradeep");
