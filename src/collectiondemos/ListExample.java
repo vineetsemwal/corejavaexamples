@@ -27,12 +27,17 @@ public class ListExample {
 
 	public static void main(String[] args) {
 
-		List list = new LinkedList();// Object arr[];
-		list.add(new Trainee(10, "prakash"));// adding element at the end
-		list.add(new Trainee(11, "pradeep"));
-		list.add(new Trainee(4, "anuj"));
-		list.add(new Trainee(13, "ankit"));
-		list.add(new Trainee(15, "pradeep"));
+		List list = new LinkedList();
+		Trainee trainee1=new Trainee(10, "prakash");
+		list.add(trainee1);// adding element at the end
+		Trainee trainee2=new Trainee(11, "pradeep");
+		list.add(trainee2);
+		Trainee trainee3=new Trainee(4, "anuj");
+		list.add(trainee3);
+		Trainee trainee4=new Trainee(13, "ankit");
+		list.add(trainee4);
+		Trainee trainee5=new Trainee(15, "pradeep");
+		list.add(trainee5);
 
 		Object element2 = list.get(2);// fetching element at index 2
 		Trainee element2Trainee = (Trainee) element2;
