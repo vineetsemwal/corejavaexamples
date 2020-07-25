@@ -72,5 +72,8 @@ public class Student{
 		String str=name+" "+ age+" "+placed;
 		return str;
 	}
+	
+		
+	
 		
 }

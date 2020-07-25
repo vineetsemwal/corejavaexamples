@@ -14,4 +14,6 @@ public class InvalidArgumentCheckedException extends Exception{
 		super(msg);
 	}
 	
+	
+	
 }
