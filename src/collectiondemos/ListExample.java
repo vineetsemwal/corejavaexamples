@@ -35,7 +35,7 @@ public class ListExample {
 		list.add(new Trainee(15, "pradeep"));
 
 		Object element2 = list.get(2);// fetching element at index 2
-		Trainee element2String = (Trainee) element2;
+		Trainee element2Trainee = (Trainee) element2;
 		int size = list.size();
 
 		System.out.println("size before removing element=" + size);
