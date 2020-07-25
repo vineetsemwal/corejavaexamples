@@ -46,6 +46,8 @@ public class ListExample {
 		System.out.println("size before removing element=" + size);
 
 		list.remove(1);// removing element at index 1
+		
+		list.remove(trainee2);
 
 		size = list.size();// size of list
 

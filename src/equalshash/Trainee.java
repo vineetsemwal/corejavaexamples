@@ -27,6 +27,13 @@ public class Trainee {
 		this.name = name;
 	}
 	
+	
+	@Override
+	public int hashCode() {
+		return id;
+	}
+	
+	
 	/**
 	 *  Trainee t1=new Trainee(10,"prakash");
 	    Trainee t2=new Trainee(10,"prakash")
