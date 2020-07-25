@@ -34,13 +34,13 @@ public class StudentMain {
 		catch(Exception e) {
 		  System.out.println("some error occurred in program");	
 		}
+		
 	}
 	
 	
 	
 	public void displayAll() {
-		for (int i = 0; i < students.length; i++) {
-			Student current = students[i];
+		for (Student current:students) {
 			boolean isCSGuy = current instanceof ComputerScienceStudent;
 			if (isCSGuy) {
 				ComputerScienceStudent cs = (ComputerScienceStudent) current;

@@ -1,10 +1,11 @@
 package exceptiondemos;
 
+
 public class HandleMoreThanOne {
 
     public static void main(String[]args){
         HandleMoreThanOne demo=new HandleMoreThanOne();
-        demo.display(1);
+        demo.display(6);
 
     }
 
@@ -20,12 +21,14 @@ public class HandleMoreThanOne {
             System.out.println(id+" "+name);
            
         }
-
+    	
+    
         catch(ArrayIndexOutOfBoundsException exception){
             System.out.println("index your provided is out of range, index="+index);   
    
         }
         catch (NullPointerException exception){
+        	exception.printStackTrace();
             System.out.println("element does not exist in the store at index="+index);
         }
 

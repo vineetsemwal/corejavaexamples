@@ -2,7 +2,7 @@ package exceptiondemos;
 
 public class CustomCheckedExceptionDemo {
 
-	public static void main(String[] args)throws InvalidArgumentCheckedException {
+	public static void main(String[] args) throws InvalidArgumentCheckedException{
 
 		CustomCheckedExceptionDemo demo = new CustomCheckedExceptionDemo();
 		Product product = null;
@@ -16,6 +16,7 @@ public class CustomCheckedExceptionDemo {
 				InvalidArgumentCheckedException exception = new InvalidArgumentCheckedException("invalid argument");
 				throw exception;			
 		}
+		
 		String id = product.getId();
 		String name = product.getName();
 		System.out.println("product =" + id + " " + name);
