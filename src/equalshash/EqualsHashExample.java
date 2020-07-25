@@ -11,8 +11,8 @@ public  class EqualsHashExample {
 	 System.out.println("is same="+issame);
 	 System.out.println("is equal="+isEquals);
 	
-	 String s1=new String("hello");
-	 String s2=new String("hello");
+	 String s1="hello";
+	 String s2="hello";
 	 boolean isStringSame=s1==s2;
 	 boolean isStringEqual=s1.equals(s2);
 	 System.out.println("is string same="+isStringSame);
