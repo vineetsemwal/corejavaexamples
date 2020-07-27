@@ -35,8 +35,8 @@ public class Trainee {
 	
 	
 	/**
-	 *  Trainee t1=new Trainee(10,"prakash");
-	    Trainee t2=new Trainee(10,"prakash")
+	 *  Trainee t1=new Trainee(10,"prakash");//10
+	    Trainee t2=new Trainee(10,"prakash");//10
   	    boolean isEquals=t1.equals(t2);	
 	 */
     @Override

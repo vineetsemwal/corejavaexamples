@@ -27,7 +27,7 @@ public class ListExample {
 
 	public static void main(String[] args) {
 
-		List list = new LinkedList();
+		List list = new ArrayList();
 		Trainee trainee1=new Trainee(10, "prakash");
 		list.add(trainee1);// adding element at the end
 		Trainee trainee2=new Trainee(11, "pradeep");
@@ -47,7 +47,7 @@ public class ListExample {
 
 		list.remove(1);// removing element at index 1
 		
-		list.remove(trainee2);
+		list.remove(trainee2);// removing by passing element
 
 		size = list.size();// size of list
 
@@ -70,7 +70,16 @@ public class ListExample {
 			Trainee trainee = (Trainee) obj;
 			System.out.println("element=" + trainee.getId() + " " + trainee.getName());
 		}
-
+		
+	   Iterator iterator=list.iterator();
+	   //hasNext() will return true if next element is available
+	   while(iterator.hasNext()) {
+		  Object obj =iterator.next();// fetch next element
+			Trainee trainee = (Trainee) obj;
+			System.out.println("element=" + trainee.getId() + " " + trainee.getName());
+		  
+	   }
+	   
 	}
 
 }
