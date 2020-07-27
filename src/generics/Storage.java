@@ -5,7 +5,7 @@ package generics;
  * store of one element
  * 
  * Fake T data type
- * Placeholder of real data type
+ * T is Placeholder of real data type
  */
 public class Storage<T> {
 	  
