@@ -7,7 +7,7 @@ import equalshash.Trainee;
 public class SetExample {
 
 	public static void main(String[]args) {
-		Set set=new LinkedHashSet();
+		Set<Trainee> set=new HashSet<>();
 		Trainee trainee1=new Trainee(10, "prakash");
 		set.add(trainee1);// adding element at the end
 		Trainee trainee2=new Trainee(11, "pradeep");
@@ -23,12 +23,20 @@ public class SetExample {
 		System.out.println("before remove size="+size);
 		set.remove(trainee4);
 		System.out.println("after remove size="+size);
-		for(Object obj:set) {
-		Trainee trainee=(Trainee)obj;
+		for(Trainee trainee:set) {
 		System.out.println(trainee.getId()+" "+trainee.getName());
 			
 		}
 		
+		System.out.println("******using iterator*******");
+		   Iterator<Trainee> iterator=set.iterator();
+		   //hasNext() will return true if next element is available
+		   while(iterator.hasNext()) {		 
+				Trainee trainee = iterator.next();// fetch next element
+				System.out.println("element=" + trainee.getId() + " " + trainee.getName());
+			  
+		   }
+
 		
 		
 		
