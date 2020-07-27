@@ -22,6 +22,7 @@ public class SetExample {
 		int size= set.size();
 		System.out.println("before remove size="+size);
 		set.remove(trainee4);
+		size= set.size();
 		System.out.println("after remove size="+size);
 		for(Trainee trainee:set) {
 		System.out.println(trainee.getId()+" "+trainee.getName());
