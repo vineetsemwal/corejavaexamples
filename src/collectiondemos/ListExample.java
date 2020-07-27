@@ -27,7 +27,7 @@ public class ListExample {
 
 	public static void main(String[] args) {
 
-		List list = new LinkedList();
+		List<Trainee> list = new ArrayList<>();
 		Trainee trainee1=new Trainee(10, "prakash");
 		list.add(trainee1);// adding element at the end
 		Trainee trainee2=new Trainee(11, "pradeep");
@@ -39,8 +39,7 @@ public class ListExample {
 		Trainee trainee5=new Trainee(15, "pradeep");
 		list.add(trainee5);
 
-		Object element2 = list.get(2);// fetching element at index 2
-		Trainee element2Trainee = (Trainee) element2;
+		Trainee element2 = list.get(2);// fetching element at index 2
 		int size = list.size();
 
 		System.out.println("size before removing element=" + size);
@@ -59,23 +58,21 @@ public class ListExample {
 		System.out.println("contains=" + iscontain);
 
 		for (int i = 0; i < list.size(); i++) {
-			Object obj = list.get(i);
-			Trainee trainee = (Trainee) obj;
+			Trainee trainee = list.get(i);
 			System.out.println("element=" + trainee.getId() + " " + trainee.getName());
 
 		}
 
-		System.out.println("using for each");
-		for (Object obj : list) {
-			Trainee trainee = (Trainee) obj;
+		System.out.println("*****using for each******");
+		for (Trainee trainee : list) {
 			System.out.println("element=" + trainee.getId() + " " + trainee.getName());
 		}
 		
-	   Iterator iterator=list.iterator();
+		System.out.println("******using iterator*******");
+	   Iterator<Trainee> iterator=list.iterator();
 	   //hasNext() will return true if next element is available
-	   while(iterator.hasNext()) {
-		  Object obj =iterator.next();// fetch next element
-			Trainee trainee = (Trainee) obj;
+	   while(iterator.hasNext()) {		 
+			Trainee trainee = iterator.next();// fetch next element
 			System.out.println("element=" + trainee.getId() + " " + trainee.getName());
 		  
 	   }
