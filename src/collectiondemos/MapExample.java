@@ -13,7 +13,7 @@ public class MapExample {
 		Trainee trainee4 = new Trainee(13, "ankit");
 		Trainee trainee5 = new Trainee(15, "pradeep");
 
-		Map map = new HashMap();
+		Map<Integer,Trainee> map = new HashMap<>();
 		map.put(10, trainee1);
 		map.put(11, trainee2);
 		map.put(4, trainee3);
@@ -24,17 +24,15 @@ public class MapExample {
 		
 		System.out.println("size="+size);
 
-		Object fetched = map.get(11);// fetching value associated with key 11
-		Trainee trainee = (Trainee) fetched;
+		Trainee trainee = map.get(11);// fetching value associated with key 11
 		System.out.println(trainee.getId() + " " + trainee.getName());
 
 		map.remove(4);// removing element by key=4
 		
-		Set keys = map.keySet();
-		for (Object k : keys) {
-			Object v = map.get(k);
-			Trainee traineeObj = (Trainee) v;
-			System.out.println(traineeObj.getId() + " " + traineeObj.getName());
+		Set<Integer> keys = map.keySet();
+		for (Integer k : keys) {
+			Trainee fetched = map.get(k);
+			System.out.println(fetched.getId() + " " +fetched.getName());
 
 		}
 
