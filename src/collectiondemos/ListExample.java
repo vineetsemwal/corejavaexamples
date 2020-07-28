@@ -27,6 +27,7 @@ public class ListExample {
 
 	public static void main(String[] args) {
 
+		
 		List<Trainee> list = new ArrayList<>();
 		Trainee trainee1=new Trainee(10, "prakash");
 		list.add(trainee1);// adding element at the end
