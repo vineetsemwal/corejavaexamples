@@ -1,8 +1,8 @@
 package multithreaddemos;
 
-public class Thread1 extends Thread {
+public class NumberThread extends Thread {
 
-	public Thread1(String name) {
+	public NumberThread(String name) {
 		super(name);
 	}
 
