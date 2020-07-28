@@ -6,6 +6,10 @@ public class ThreadExample1 {
 		NumberThread thread1=new NumberThread("thread 1");
 		thread1.start();
 		
+		NumberThread thread2=new NumberThread("thread 2");
+		thread2.start();
+		
+		
 		try {
 		
 		for (char ch = 'a'; ch < 'm'; ch++) {
