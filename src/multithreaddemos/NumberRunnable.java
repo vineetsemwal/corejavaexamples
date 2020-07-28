@@ -20,7 +20,6 @@ public class NumberRunnable implements Runnable{
 
 	@Override
 	public void run() {
-		// super.run();
 				try {
 					for (int i = 0; i < 10; i++) {
 						System.out.println( name + " i=" + i);
