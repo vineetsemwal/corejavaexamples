@@ -5,7 +5,8 @@ public class MessageDecorator {
 	/**
 	 * expectation: (hello)
 	 */
-	synchronized public void greet() {
+	 synchronized public void greet() {
+		
 		try {
 			System.out.print("(");
 			Thread.sleep(1000);
@@ -14,6 +15,7 @@ public class MessageDecorator {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 }
