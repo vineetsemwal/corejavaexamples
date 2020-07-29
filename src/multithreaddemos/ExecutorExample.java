@@ -21,10 +21,10 @@ public class ExecutorExample {
      *   3) Single thread pool : only 1 thread is there
      */
     public static void main(String[]args){
-    // ExecutorService executorService =Executors.newFixedThreadPool(2);
+     ExecutorService executorService =Executors.newFixedThreadPool(2);
     	
        //ExecutorService executorService =Executors.newCachedThreadPool();
-    	ExecutorService executorService =Executors.newSingleThreadExecutor();
+      //ExecutorService executorService =Executors.newSingleThreadExecutor();
         
        Runnable task1=new NumberRunnable("task 1");
        Runnable task2=new NumberRunnable("task 2");

@@ -3,8 +3,8 @@ package multithreaddemos;
 public class ThreadExample1 {
 
 	public static void main(String args[]) {
-		NumberThread thread1=new NumberThread("thread 1");
-		thread1.start();
+		Thread thread1=new NumberThread("thread 1");
+		thread1.start();//method for starting the thread
 		
 		NumberThread thread2=new NumberThread("thread 2");
 		thread2.start();
