@@ -40,8 +40,17 @@ public class StudentMain {
 			System.out.println("****fetch studnt by name=" + name3);
 
 			Student fetched = findByName(name3);
-			displayStudent(fetched);
-            System.out.println("*******displaying all students********"); 
+		    if(fetched instanceof ComputerScienceStudent) {
+		     ComputerScienceStudent fetchedCsStudent=(ComputerScienceStudent) fetched;
+		     display(fetchedCsStudent);
+		    }
+		    if(fetched instanceof ElectronicsStudent) {
+			     ElectronicsStudent fetchedEceStudent=(ElectronicsStudent) fetched;
+			     display(fetchedEceStudent);
+			}
+			    
+		    
+			System.out.println("*******displaying all students********"); 
 			
 			displayAll();
 		} catch (InvalidStudentArgumentException e) {
