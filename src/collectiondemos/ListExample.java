@@ -39,7 +39,7 @@ public class ListExample {
 		Trainee trainee3=new Trainee(4, "anuj");
 		list.add(trainee3);
 		
-         Comparator<Trainee> comparator=new TraineeComparator();
+        Comparator<Trainee> comparator=new TraineeComparator();
 		list.sort(comparator);
 		
 		Trainee element2 = list.get(2);// fetching element at index 2
