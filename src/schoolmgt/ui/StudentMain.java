@@ -3,10 +3,16 @@ package schoolmgt.ui;
 import schoolmgt.Student;
 import schoolmgt.ElectronicsStudent;
 import schoolmgt.InvalidStudentArgumentException;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 import schoolmgt.ComputerScienceStudent;
+import schoolmgt.Course;
 
 public class StudentMain {
-	private Student students[] = new Student[11];
+	private Map<String,Student>store=new HashMap<>();
 
 	public static void main(String[] args) {
 	 StudentMain demo=new StudentMain();
@@ -15,15 +21,20 @@ public class StudentMain {
 		
 	public void runApp() {
 		try {
+		Course course1=new Course(1,"java");
+	    Course course2=new Course(2,"python");		
 		ElectronicsStudent student1 = new ElectronicsStudent("ankit", 21, true, "multimeter");
+		student1.setCourse(course1);
 		ComputerScienceStudent student2 = new ComputerScienceStudent("balakrishna", 21, true, "dell");
+		student2.setCourse(course2);
 		ComputerScienceStudent student3 = new ComputerScienceStudent("prasanna", 22, true, "asus");
+		student3.setCourse(course1);
 		ElectronicsStudent student4 = new ElectronicsStudent("saiteja", 22, true, "diode");
-       
-		students[0] = student1;
-		students[1] = student2;
-		students[2] = student3;
-		students[3] = student4;
+        student4.setCourse(course2);
+		store.put(student1.getName(), student1);
+		store.put(student2.getName(), student2);
+		store.put(student3.getName(),student3);
+		store.put(student4.getName(), student4);
 		
 		
 		displayAll();
@@ -40,7 +51,9 @@ public class StudentMain {
 	
 	
 	public void displayAll() {
-		for (Student current:students) {
+		Set<String>keys=store.keySet();
+		for (String key:keys) {
+			Student current=store.get(key);
 			boolean isCSGuy = current instanceof ComputerScienceStudent;
 			if (isCSGuy) {
 				ComputerScienceStudent cs = (ComputerScienceStudent) current;
@@ -72,7 +85,8 @@ public class StudentMain {
 		int age = student.getAge();
 		boolean placed=student.getPlaced();
     	System.out.println("name is " + name + " age is " + age + " is placed " + placed);
-		
+		Course course=student.getCourse();
+		System.out.println("student pursuing course="+course.getId()+" "+course.getName());
 	}
 	
 	public void display(ElectronicsStudent student) {

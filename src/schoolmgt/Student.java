@@ -14,6 +14,9 @@ public class Student{
 	private int age;//default to 0 
 	private boolean placed;//default to false
 	
+	private Course course;
+		
+	
 	/**
 	 * constructor is executed immediately after object creation 
 	 * constructor is only executed once after object creation 
@@ -65,6 +68,15 @@ public class Student{
 	
 	public void setPlaced(boolean placed) {
 		this.placed=placed;
+	}
+	
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 	
 	@Override
