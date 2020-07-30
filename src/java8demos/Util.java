@@ -14,4 +14,9 @@ public class Util {
        return str.length();
     }
 
+    public String greetMessage(){
+       return "hello";
+    }
+
+
 }

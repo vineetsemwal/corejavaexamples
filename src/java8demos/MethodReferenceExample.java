@@ -17,8 +17,7 @@ public class MethodReferenceExample {
         printer2.accept("hey");
 
         BinaryOperator<Integer> addOperator1=(num1, num2)->{
-            Util adder=new Util();
-            int result= adder.add(1,2);
+            int result= util.add(1,2);
             return result;
         } ;
         int op1Result=addOperator1.apply(5,7);
@@ -45,6 +44,15 @@ public class MethodReferenceExample {
         Function<String,Integer>lengthOp2=util::findLength;
         int length2=lengthOp2.apply("mumbai");
         System.out.println("mumbai length="+length2);
+
+        Supplier<String>supplier1=()->"hello";
+        Supplier<String>supplier2=util::greetMessage;
+        System.out.println("suppliers created");
+
+        String greet1=supplier1.get();
+        System.out.println("greetings from supplier 1="+greet1);
+        String greet2=supplier2.get();
+        System.out.println("greetings from supplier 2="+ greet2);
 
     }
 
