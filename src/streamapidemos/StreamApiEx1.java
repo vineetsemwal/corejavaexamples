@@ -35,6 +35,10 @@ public class StreamApiEx1 {
         Function<String,Integer>function=(city)->city.length();
         Stream<Integer>lengthStream=citiesStream.map(function);// intermediate operation
         Consumer<Integer>consumer=System.out::println;
+        System.out.println("operations defined on stream");
+        //streams are lazy in nature ie. they will not executed until we do a terminal operation
+        // on them like below
+        //
         lengthStream.forEach(consumer);// terminal operation, we have used up the stream
 
 
