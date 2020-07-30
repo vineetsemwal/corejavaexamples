@@ -33,6 +33,9 @@ public class StreamApiEx1 {
          */
         Stream<String>citiesStream=cities.stream();
         Function<String,Integer>function=(city)->city.length();
+        //
+        // map is used for tranforming one type of stream to another type
+        //
         Stream<Integer>lengthStream=citiesStream.map(function);// intermediate operation
         Consumer<Integer>consumer=System.out::println;
         System.out.println("operations defined on stream");
