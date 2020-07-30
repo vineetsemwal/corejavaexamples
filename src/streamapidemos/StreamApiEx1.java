@@ -2,6 +2,8 @@ package streamapidemos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 public class StreamApiEx1 {
@@ -29,12 +31,17 @@ public class StreamApiEx1 {
         /**
          * We are NOT implementing operations, we are only declaring the needed operations
          */
-        cities.stream().map(city->city.length()).forEach(System.out::println);
-
-
         Stream<String>citiesStream=cities.stream();
-        Stream<Integer>lengthStream=citiesStream.map(city->city.length());// intermediate operation
-        lengthStream.forEach(System.out::println);// terminal operation, we have used up the stream
+        Function<String,Integer>function=(city)->city.length();
+        Stream<Integer>lengthStream=citiesStream.map(function);// intermediate operation
+        Consumer<Integer>consumer=System.out::println;
+        lengthStream.forEach(consumer);// terminal operation, we have used up the stream
+
+
+        /**
+         * We are NOT implementing operations, we are only declaring the needed operations
+         */
+        cities.stream().map(city->city.length()).forEach(System.out::println);
 
 
 
