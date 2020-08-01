@@ -29,7 +29,7 @@ public class StudentServiceImpl implements IStudentService {
 	
 	public void checkId(int id) {
 		if (id < 1) {
-			throw new InvalidArgumentException("id cant be negative");
+			throw new InvalidArgumentException("id cant be negative, id passed="+id);
 		}
 	}
 

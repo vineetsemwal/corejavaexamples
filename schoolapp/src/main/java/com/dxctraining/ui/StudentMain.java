@@ -1,6 +1,7 @@
 package com.dxctraining.ui;
 
 import com.dxctraining.entities.*;
+import com.dxctraining.exceptions.*;
 import com.dxctraining.service.*;
 
 import java.util.*;
@@ -15,7 +16,7 @@ public class StudentMain {
 	}
 
 	public void runApp() {
-		System.out.println("insiderunapp");
+		try {
 		Course java = new Course(1, "java");
 		Course python = new Course(2, "python");
 		Course embedded = new Course(3, "embedded");
@@ -36,6 +37,21 @@ public class StudentMain {
 		display(fetched);		
 		System.out.println("********display all students******");
 		displayAll();
+		}catch(InvalidArgumentException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+		
+		catch(StudentNotFoundException e) {
+			 e.printStackTrace();
+			 System.out.println(e.getMessage());
+		}
+		
+		catch(Exception e) {
+		 e.printStackTrace();
+		 System.out.println("some thing went wrong");
+		}
+		
 	}
 
 	public void displayAll() {
