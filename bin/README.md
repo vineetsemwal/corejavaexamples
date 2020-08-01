@@ -1,1 +1,0 @@
-Core java basic training examples
