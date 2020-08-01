@@ -4,4 +4,4 @@
 *.iml
 .idea
 bin
-target
+**/target
