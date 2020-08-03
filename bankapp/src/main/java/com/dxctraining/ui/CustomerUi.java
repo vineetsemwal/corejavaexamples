@@ -4,6 +4,10 @@ import com.dxctraining.entities.Account;
 import com.dxctraining.entities.BusinessCustomer;
 import com.dxctraining.entities.Customer;
 import com.dxctraining.entities.RegularCustomer;
+import com.dxctraining.exceptions.CustomerNotFoundException;
+import com.dxctraining.exceptions.InSufficientAmountException;
+import com.dxctraining.exceptions.InvalidAmountException;
+import com.dxctraining.exceptions.InvalidArgumentException;
 import com.dxctraining.service.CustomerServiceImpl;
 import com.dxctraining.service.ICustomerService;
 
@@ -20,17 +24,42 @@ public class CustomerUi {
 
 
     public void runUi() {
-        BusinessCustomer customer1 = customerService.createBusinessCustomer("ashok", "hybdoffice", "abcf673");
-        BusinessCustomer customer2 = customerService.createBusinessCustomer("vineel", "banglore-office", "abcf673");
-        RegularCustomer customer3 = customerService.createRegularCustomer("anuj", "delhi", "6732hbdcba");
-        RegularCustomer customer4 = customerService.createRegularCustomer("pradeep", "andhra-home", "98uhjaejaw");
+        try {
+            BusinessCustomer customer1 = customerService.createBusinessCustomer("ashok", "hybdoffice", "abcf673");
+            BusinessCustomer customer2 = customerService.createBusinessCustomer("vineel", "banglore-office", "abcf673");
+            RegularCustomer customer3 = customerService.createRegularCustomer("anuj", "delhi", "6732hbdcba");
+            RegularCustomer customer4 = customerService.createRegularCustomer("pradeep", "andhra-home", "98uhjaejaw");
 
-        String id1 = customer1.getId();
-        String id2 = customer2.getId();
-        customerService.addAmount(id1, 100);
-        customerService.addAmount(id2, 200);
-        customerService.deductAmount(id2, 50);
-        displayAll();
+            String id1 = customer1.getId();
+            String id2 = customer2.getId();
+            customerService.addAmount(id1, 100);
+            customerService.addAmount(id2, 200);
+            customerService.deductAmount(id2, 50);
+            displayAll();
+        }
+
+        catch (CustomerNotFoundException e){
+            String msg=e.getMessage();
+            System.out.println(msg);
+        }
+        catch (InvalidArgumentException e){
+            String msg=e.getMessage();
+            System.out.println(msg);
+        }
+
+        catch (InvalidAmountException exception){
+            //exception.printStackTrace();
+            String msg=exception.getMessage();
+            System.out.println(msg);
+        }
+        catch (InSufficientAmountException e){
+            String msg=e.getMessage();
+            System.out.println(msg);
+        }
+
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
