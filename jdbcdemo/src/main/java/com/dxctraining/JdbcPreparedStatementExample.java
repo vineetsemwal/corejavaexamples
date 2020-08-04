@@ -7,62 +7,74 @@ import java.sql.*;
 
 public class JdbcPreparedStatementExample {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
         JdbcPreparedStatementExample example = new JdbcPreparedStatementExample();
         example.runApp();
 
     }
 
-    public void runApp() throws Exception {
-        addEmployee(17,"anuj",700.32,22,2);
-        deleteById(4);
-        System.out.println("********dislay employe with id=1**********");
-        displayEmployee(1);
-        System.out.println("***********Display all emplyees**********");
-        displayAllEmployees();
+    public void runApp() {
+        try {
+            addEmployee(17, "anuj", 700.32, 22, 2);
+            deleteById(4);
+            System.out.println("********dislay employe with id=1**********");
+            displayEmployee(1);
+            System.out.println("***********Display all emplyees**********");
+            displayAllEmployees();
+        }catch (SQLException e){
+            e.printStackTrace();
+            System.out.println("something went wrong");
+        }
 
     }
 
-    public void addEmployee(int id, String name,  double balance,int age,  int did) throws Exception {
+    public void addEmployee(int id, String name, double balance, int age, int did) throws SQLException {
         Connection connection = null;
         try {
             connection = createConnection();
             String sql = "insert into employees(id,name,balance,age,did) values(?,?,?,?,?)";
-            PreparedStatement statement=connection.prepareStatement(sql);
-            statement.setInt(1,id);
-            statement.setString(2,name);
-            statement.setDouble(3,balance);
-            statement.setInt(4,age);
-            statement.setInt(5,did);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.setString(2, name);
+            statement.setDouble(3, balance);
+            statement.setInt(4, age);
+            statement.setInt(5, did);
             int rows = statement.executeUpdate();
-            System.out.println("rows inserted="+rows);
-        } finally {
+            System.out.println("rows inserted=" + rows);
+        }
+         catch (Exception e){
+            e.printStackTrace();
+         }
+        finally {
             connection.close();
         }
     }
 
-    public void deleteById(int id) throws Exception{
+    public void deleteById(int id) throws SQLException {
         Connection connection = null;
         try {
             connection = createConnection();
             String sql = "delete from employees where id=?";
-            PreparedStatement statement=connection.prepareStatement(sql);
-            statement.setInt(1,id);
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
             int rows = statement.executeUpdate();
-            System.out.println("rows deleted="+rows);
-        } finally {
+            System.out.println("rows deleted=" + rows);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
             connection.close();
         }
 
     }
 
-    public void displayEmployee(int id) throws Exception {
+    public void displayEmployee(int id) throws SQLException {
         Connection connection = null;
         try {
             connection = createConnection();
-            String sql = "select * from employees where id=?" ;
+            String sql = "select * from employees where id=?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1,id);
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             //
             //-> record 1 id , name ,age , balance, did
@@ -83,7 +95,7 @@ public class JdbcPreparedStatementExample {
     }
 
 
-    public void displayAllEmployees() throws Exception {
+    public void displayAllEmployees() throws SQLException {
         Connection connection = null;
         try {
             connection = createConnection();
