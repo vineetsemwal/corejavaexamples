@@ -21,13 +21,17 @@ import equalshash.Trainee;
  * 
  * arraylist is good in performance fetching element by index arraylist is bad
  * in performance when elements are added or removed at start or middle
+
+   LinkedList is a double ended queue, you can traverse left to right and righ to left
+   But fetching element at a particular index will be a lot slower than ArrayList because in LinkedList traversing will be
+   sequential 
  *
  */
 public class ListExample {
 
 	public static void main(String[] args) {
 
-		List<Trainee> list = new ArrayList<>();
+		List<Trainee> list = new LinkedList<>();
 		Trainee trainee1=new Trainee(10, "prakash");
 		list.add(trainee1);// adding element at the end
 		Trainee trainee2=new Trainee(11, "pradeep");
