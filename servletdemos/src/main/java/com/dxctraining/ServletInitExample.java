@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 )
 public class ServletInitExample extends HttpServlet {
 
-    private int counter;
+    private int counter;// servletscoped , available in al the requests to this servlet
 
     @Override
     public void init() throws ServletException {

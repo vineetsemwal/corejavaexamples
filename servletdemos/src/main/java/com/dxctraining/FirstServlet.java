@@ -12,7 +12,7 @@ public class FirstServlet extends HttpServlet {
     // life cycle methods init , service, destroy
 
     /**
-     * every time request is received , service method will get called by servlet container to generate response
+     * every time request is received , doGet method will get called by servlet container to generate response
      *
      *
      *   Servlet Container will call service method  because it is holding object of our servlet classs
