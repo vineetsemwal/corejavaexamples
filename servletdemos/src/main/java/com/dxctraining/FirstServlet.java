@@ -27,7 +27,7 @@ public class FirstServlet extends HttpServlet {
      * @throws IOException
      */
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
@@ -39,6 +39,9 @@ public class FirstServlet extends HttpServlet {
         String endHtml="</body> </html>";
         writer.println(endHtml);
     }
+
+
+
 }
 
 
