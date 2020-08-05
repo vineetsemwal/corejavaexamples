@@ -10,7 +10,7 @@
 <img src="images/indianflag.png">
 <br>
  
- <form method="get" action="getform">
+ <form method="post" action="postform">
   <div>
  <label>Username</label>           
  <input type="text" name="username" placeholder="write name">
@@ -21,14 +21,17 @@
  <input type="password" name="password"> 
  </div>
 
-      <div>
-        <input type="checkbox" name="language" value="java">
-          <label>Java</label>
-      </div>
-        <div>
-        <input type="checkbox" name="language" value="python">
-       <label>python</label>
-    </div>
+
+  <div>
+   <label>Java</label>
+   <input type="radio" name="language" value="java">
+  </div>
+
+  <div>
+  <label>python</label>
+  <input type="radio" name="language" value="python">
+  </div>
+
   
  <input type="submit" value="Submit Form">
 
