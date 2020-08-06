@@ -20,7 +20,10 @@ public class SessionHomeServlet extends HttpServlet {
         session.setAttribute("username",usernameVal);
         session.setAttribute("password",passwordVal);
         session.setAttribute("language",languageVal);
-        //session.setMaxInactiveInterval(60);
+        //in our case session should net get expired even after 1 year if user is constantly using it
+        //it will only expire when user is not using for time (1 minute)
+        //
+        session.setMaxInactiveInterval(60);
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         PrintWriter writer= response.getWriter();
