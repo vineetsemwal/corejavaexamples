@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet("/sessionhome")
-public class HomeSessionExample extends HttpServlet {
+public class SessionHomeServlet extends HttpServlet {
 
 
     @Override
