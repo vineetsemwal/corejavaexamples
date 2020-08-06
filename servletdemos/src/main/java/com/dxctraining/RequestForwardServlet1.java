@@ -15,7 +15,7 @@ public class RequestForwardServlet1 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           RequestDispatcher dispatcher= request.getRequestDispatcher("/forwarded");
+           RequestDispatcher dispatcher= request.getRequestDispatcher("forwarded");
            dispatcher.forward(request,response);
     }
 }
