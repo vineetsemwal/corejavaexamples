@@ -29,7 +29,7 @@ public class HomeURlReWrite extends HttpServlet {
         writer.println("<div>");
         writer.println("Language You are using is "+languageVal);
         writer.println("</div>");
-        String url=String.format("<a href=profile?username=%s&password=%s&language=%s>Visit Profile </a>",usernameVal,passwordVal,languageVal);
+        String url=String.format("<a href='profile?username=%s&password=%s&language=%s'>Visit Profile </a>",usernameVal,passwordVal,languageVal);
         writer.println(url);
         System.out.println("url created="+url);
         String endHtml="</body> </html>";

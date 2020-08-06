@@ -28,7 +28,7 @@ public class ProfileUrlRewrite extends HttpServlet {
         writer.println("<div>");
         writer.println("Language You are using is "+languageVal);
         writer.println("</div>");
-        String url=String.format("<a href=home?username=%s&password=%s&language=%s>Visit Home</a>",usernameVal,passwordVal,languageVal);
+        String url=String.format("<a href='home?username=%s&password=%s&language=%s'>Visit Home</a>",usernameVal,passwordVal,languageVal);
         writer.println(url);
         String endHtml="</body> </html>";
         writer.println(endHtml);

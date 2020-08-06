@@ -13,7 +13,7 @@ public class GetFormServlet extends HttpServlet{
 
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String usernameVal= request.getParameter("username");
          String passwordVal=request.getParameter("password");
