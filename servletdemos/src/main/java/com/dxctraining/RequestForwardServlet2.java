@@ -18,17 +18,17 @@ public class RequestForwardServlet2 extends HttpServlet {
         String languageVal=request.getParameter("language");
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
-        PrintWriter writer= response.getWriter();
+        PrintWriter out= response.getWriter();
         String startHtml="<!DOCTYPE html>";
-        writer.println(startHtml);// writing to output stream
-        writer.println("<html><body>");
-        writer.println("<h1>Inside  Request forward servlet2</h1>");
-        writer.println("username is "+ usernameVal+" password is "+passwordVal);
-        writer.println("<div>");
-        writer.println("Language You are using is "+languageVal);
-        writer.println("</div>");
+        out.println(startHtml);// writing to output stream
+        out.println("<html><body>");
+        out.println("<h1>Inside  Request forward servlet2</h1>");
+        out.println("username is "+ usernameVal+" password is "+passwordVal);
+        out.println("<div>");
+        out.println("Language You are using is "+languageVal);
+        out.println("</div>");
         String endHtml="</body> </html>";
-        writer.println(endHtml);
+        out.println(endHtml);
 
     }
 }

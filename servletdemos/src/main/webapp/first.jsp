@@ -5,7 +5,11 @@
 <%@ page import="com.dxctraining.Calculator"  %>
 
 <jsp:useBean id="calcy" scope="page"  class= "com.dxctraining.Calculator"/>
+<!--
+internally this is what is happening fr above jsp usebean tag
+ Calculator calcy=new Calculator();
 
+ -->
 
 
 <!DOCTYPE html>
@@ -29,6 +33,7 @@
 
 <h3>Scriplet below </h3>
 <br>
+
 <%
 for( int i=0; i<10;i++){
 out.println("i="+i+" <br>");
@@ -80,7 +85,7 @@ out.println("j ="+j);
 <br>
 <%
 int result2=calcy.add(3,4);
-  out.println("result of addition="+result2);
+out.println("result of addition="+result2);
 
 %>
 <br>
