@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 
 <%@ page import="java.util.*"  %>
+<%@ page import="com.dxctraining.Calculator"  %>
+
+<jsp:useBean id="calcy" scope="page"  class= "com.dxctraining.Calculator"/>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -22,7 +27,7 @@
 
 <!---Comment-->
 
-Scriplet below
+<h3>Scriplet below </h3>
 <br>
 <%
 for( int i=0; i<10;i++){
@@ -30,8 +35,13 @@ out.println("i="+i+" <br>");
 }
 %>
 
-Another Scriplet below
+
+
+<h3>Another Scriplet below</h3>
 <br>
+
+<!--Declaring variable below -->
+<%! int j=20; %>
 
 <%
 
@@ -45,6 +55,35 @@ out.println(name+"<br>");
 
 %>
 
+<br>
+
+<!---Using declared variable -->
+<%
+out.println("j ="+j);
+%>
+
+<br>
+<h3>Calculator use below </h3>
+
+<br>
+ <%
+
+ Calculator calculator=new Calculator();
+  int result1=calculator.add(1,2);
+  out.println("result of addition="+result1);
+
+ %>
+<br>
+
+<h3>Using   object created by jsp useBean </h3>
+
+<br>
+<%
+int result2=calcy.add(3,4);
+  out.println("result of addition="+result2);
+
+%>
+<br>
 
 </body>
 </html>
