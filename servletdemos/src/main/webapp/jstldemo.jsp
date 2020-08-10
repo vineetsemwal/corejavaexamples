@@ -13,6 +13,13 @@
 <h1> Jstl demo </h1>
 
 <h3> All Students </h3>
+
+<--
+ Below c:foreach will do the same task
+  for(Student stud: list){
+   out.println(stud.rollno);
+  }
+-->
 <c:forEach items="${list}" var="stud" >
 
 <c:out value="${stud.rollno}" />

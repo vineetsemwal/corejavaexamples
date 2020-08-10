@@ -6,7 +6,7 @@
 
 <jsp:useBean id="calcy" scope="page"  class= "com.dxctraining.Calculator"/>
 <!--
-internally this is what is happening fr above jsp usebean tag
+internally this is what is happening for above jsp usebean tag
  Calculator calcy=new Calculator();
 
  -->
@@ -39,7 +39,6 @@ for( int i=0; i<10;i++){
 out.println("i="+i+" <br>");
 }
 %>
-
 
 
 <h3>Another Scriplet below</h3>
@@ -86,8 +85,8 @@ out.println("j ="+j);
 <%
 int result2=calcy.add(3,4);
 out.println("result of addition="+result2);
-
 %>
+
 <br>
 
 </body>
