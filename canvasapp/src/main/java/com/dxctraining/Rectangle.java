@@ -1,5 +1,8 @@
 package com.dxctraining;
 
+import org.springframework.stereotype.Component;
+
+
 public class Rectangle implements Shape{
 
 	private int length, breadth;
@@ -7,6 +10,10 @@ public class Rectangle implements Shape{
 	public Rectangle(int length, int breadth) {
 		this.length=length;
 		this.breadth=breadth;
+	}
+
+	public Rectangle(){
+
 	}
 
 	public int getLength() {

@@ -1,16 +1,17 @@
 package com.dxctraining;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+/**
+ * @Component will inform spring to create object of this class and store in container
+ */
+@Component
 public class Canvas {
 
 	private Shape shape;
 
-	public Canvas(Shape shape) {
-		this.shape = shape;
-	}
-
-	public Canvas() {
-	}
-
+	@Autowired
 	public void setShape(Shape shape) {
 		this.shape = shape;
 	}
