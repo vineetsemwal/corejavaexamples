@@ -20,6 +20,8 @@ public class CanvasMain {
 		Shape shape=context.getBean(Shape.class);
 		boolean isCircle=shape instanceof Circle;
 		System.out.println("shape is circle="+isCircle);
+		//Circle circle=context.getBean(Circle.class);
+	 //   System.out.println("radius="+circle.getRadius());
 		canvas.draw();
 	}
 	

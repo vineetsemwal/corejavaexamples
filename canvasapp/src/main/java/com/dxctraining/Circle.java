@@ -1,13 +1,15 @@
 package com.dxctraining;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
  * @Component will inform spring to create object of this class and store in container
  */
-@Component
+
 public class Circle implements Shape{
-	
+
+	@Value("${circle.radius}")
 	private int radius;
 	
 	public Circle(int radius) {

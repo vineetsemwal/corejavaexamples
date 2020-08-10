@@ -1,11 +1,16 @@
 package com.dxctraining;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
 public class Rectangle implements Shape{
 
-	private int length, breadth;
+	@Value("${rectangle.length}")
+	private int length;
+
+	@Value("${rectangle.breadth}")
+	private int breadth;
 		
 	public Rectangle(int length, int breadth) {
 		this.length=length;
