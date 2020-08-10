@@ -7,7 +7,7 @@ import java.util.*;
 
 public class StudentDaoImpl implements IStudentDao {
 
-	private Map<Integer, Student> store = new HashMap<>();
+	private Map<Integer, Student> store = StudentStore.getStore();
 
 	private int generatedId;
 
