@@ -3,6 +3,9 @@ package com.dxctraining;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 
 public class Rectangle implements Shape{
 
@@ -41,5 +44,21 @@ public class Rectangle implements Shape{
 	public double area() {
 		return length*breadth;
 	}
-	
+
+	/**
+	 * lifecycle hook which will get fired when rectangle object will be constructed/created+initialized
+	 */
+	@PostConstruct
+	public void init(){
+     System.out.println("inside init of Rectangle ,length="+length+" breadth="+breadth);
+	}
+
+	/**
+	 * lifecycle hook which will get fired when rectangle object will get destroyed
+	 */
+	@PreDestroy
+	public void destroy(){
+	 System.out.println("inside predestroy of Rectangle");
+	}
+
 }

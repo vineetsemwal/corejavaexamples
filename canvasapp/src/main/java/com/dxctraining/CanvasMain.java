@@ -20,9 +20,22 @@ public class CanvasMain {
 		Shape shape=context.getBean(Shape.class);
 		boolean isCircle=shape instanceof Circle;
 		System.out.println("shape is circle="+isCircle);
+		Rectangle rectangle1 =context.getBean(Rectangle.class);
+		// fetching bean by type (Rectangle.class)
+		Rectangle rectangle2 =context.getBean(Rectangle.class);
+		//fetching bean by name "rectangle"
+		// second argument Rectangle.class is given to spring so that it can cast
+		Rectangle rectangle3= context.getBean("rectangle",Rectangle.class);
+
 		//Circle circle=context.getBean(Circle.class);
 	 //   System.out.println("radius="+circle.getRadius());
-		canvas.draw();
+		 canvas.draw();
+
+		boolean isSame=rectangle1==rectangle2;
+
+		System.out.println("isSame ="+isSame);
+        context.registerShutdownHook();
+
 	}
 	
 }
