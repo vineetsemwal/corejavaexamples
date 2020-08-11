@@ -11,15 +11,15 @@ public class DefaultOutputStreamWrite {
         OutputStream outputStream = null;
         try {
             File inputFile = new File("C:/Users/vineet/work/ioexperiment/originalfile.txt");
-            outputStream=System.out;
+            outputStream = System.out;
             inputStream = new FileInputStream(inputFile);
-            int bytesCount=0;
-            int redByte=-1;
-            while ((redByte=inputStream.read())>0){
+            int bytesCount = 0;
+            int redByte = -1;
+            while ((redByte = inputStream.read()) > 0) {
                 outputStream.write(redByte);
                 bytesCount++;
             }
-            System.out.println("bytes  read and write="+bytesCount);
+            System.out.println("bytes  read and write=" + bytesCount);
 
         } catch (IOException e) {
             e.printStackTrace();
