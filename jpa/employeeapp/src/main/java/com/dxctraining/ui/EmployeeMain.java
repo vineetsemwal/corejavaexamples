@@ -3,6 +3,9 @@ package com.dxctraining.ui;
 import com.dxctraining.entities.Employee;
 
 import javax.persistence.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 public class EmployeeMain {
@@ -16,16 +19,19 @@ public class EmployeeMain {
 
     public void execute() {
         Employee employee1 = new Employee("vineel", 21, 1000);
-        addEmployee(employee1);
+        employee1 = addEmployee(employee1);
         int id1 = employee1.getId();
         Employee employee2 = new Employee("arshad", 22, 2000);
-        addEmployee(employee2);
-        int id2 = employee2.getId();
+        employee2 = addEmployee(employee2);
 
         Employee fetchedEmployee = findEmployeeById(id1);
         System.out.println("fetched employee=" + fetchedEmployee.getId() + " " + fetchedEmployee.getName());
         System.out.println("age=" + fetchedEmployee.getAge() + " " + fetchedEmployee.getSalary());
 
+
+        Employee updated = updateEmployee(id1, "dharma", 8000);
+
+        System.out.println("updated employee=" + updated.getName());
 
         System.out.println("*************all employees*************");
         displayAllEmployees();
@@ -38,23 +44,24 @@ public class EmployeeMain {
 
         System.out.println("*********deleteing employee***********");
 
-        deleteEmployee(id1);
-        System.out.println("record deleted , id="+id1);
+        //  deleteEmployee(id1);
+        // System.out.println("record deleted , id="+id1);
 
 
     }
 
-    public void deleteEmployee(int id){
-        EntityManager entityManager=emf.createEntityManager();
-        EntityTransaction transaction=entityManager.getTransaction();
+    public void deleteEmployee(int id) {
+        EntityManager entityManager = emf.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        Employee employee=entityManager.find(Employee.class,id);
+        Employee employee = entityManager.find(Employee.class, id);
         entityManager.remove(employee);
         transaction.commit();
         entityManager.close();
     }
 
     public Employee findEmployeeById(int id) {
+        System.out.println("inside find,id=" + id);
         EntityManager entityManager = emf.createEntityManager();
         Employee employee = entityManager.find(Employee.class, id);
         entityManager.close();
@@ -62,26 +69,24 @@ public class EmployeeMain {
     }
 
 
-
     public void displayAllEmployees() {
         EntityManager entityManager = emf.createEntityManager();
-        TypedQuery<Employee>query = entityManager.createQuery("from Employee",Employee.class);
-        List<Employee>list =query.getResultList();
-        for (Employee employee:list){
+        TypedQuery<Employee> query = entityManager.createQuery("from Employee", Employee.class);
+        List<Employee> list = query.getResultList();
+        for (Employee employee : list) {
             System.out.println("fetched employee=" + employee.getId() + " " + employee.getName());
             System.out.println("age=" + employee.getAge() + " " + employee.getSalary());
         }
         entityManager.close();
     }
-
 
 
     public void displayEmployeesByName(String empName) {
         EntityManager entityManager = emf.createEntityManager();
-        TypedQuery<Employee>query = entityManager.createQuery("from Employee where name=:ename",Employee.class);
-        query.setParameter("ename",empName);
-        List<Employee>list =query.getResultList();
-        for (Employee employee:list){
+        TypedQuery<Employee> query = entityManager.createQuery("from Employee where name=:ename", Employee.class);
+        query.setParameter("ename", empName);
+        List<Employee> list = query.getResultList();
+        for (Employee employee : list) {
             System.out.println("fetched employee=" + employee.getId() + " " + employee.getName());
             System.out.println("age=" + employee.getAge() + " " + employee.getSalary());
         }
@@ -89,14 +94,27 @@ public class EmployeeMain {
     }
 
 
-
-    public void addEmployee(Employee employee) {
+    public Employee addEmployee(Employee employee) {
         EntityManager entityManager = emf.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        entityManager.persist(employee);
+        employee = entityManager.merge(employee); // inserted
         transaction.commit();
         entityManager.close();
+        return employee;
+    }
+
+    public Employee updateEmployee(int id, String newName, double newSalary) {
+        EntityManager entityManager = emf.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        Employee employee = entityManager.find(Employee.class, id);
+        employee.setName(newName);
+        employee.setSalary(newSalary);
+        employee = entityManager.merge(employee);// updated
+        transaction.commit();
+        entityManager.close();
+        return employee;
     }
 
 
