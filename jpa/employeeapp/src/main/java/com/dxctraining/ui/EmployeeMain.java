@@ -98,11 +98,14 @@ public class EmployeeMain {
         EntityManager entityManager = emf.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        employee = entityManager.merge(employee); // inserted
+        //will insert because id in employee object doesnt exist in record
+        employee = entityManager.merge(employee);
         transaction.commit();
         entityManager.close();
         return employee;
     }
+
+    
 
     public Employee updateEmployee(int id, String newName, double newSalary) {
         EntityManager entityManager = emf.createEntityManager();
@@ -111,7 +114,8 @@ public class EmployeeMain {
         Employee employee = entityManager.find(Employee.class, id);
         employee.setName(newName);
         employee.setSalary(newSalary);
-        employee = entityManager.merge(employee);// updated
+        //will update because id in employee object exists in one of the record in table
+        employee = entityManager.merge(employee);
         transaction.commit();
         entityManager.close();
         return employee;
