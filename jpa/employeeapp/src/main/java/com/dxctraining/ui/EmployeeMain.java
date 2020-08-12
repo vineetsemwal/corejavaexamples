@@ -47,6 +47,7 @@ public class EmployeeMain {
         //  deleteEmployee(id1);
         // System.out.println("record deleted , id="+id1);
 
+        emf.close();
 
     }
 
@@ -98,14 +99,14 @@ public class EmployeeMain {
         EntityManager entityManager = emf.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
-        //will insert because id in employee object doesnt exist in record
+        //will insert because id in employee object doesnt exist in any record of table
         employee = entityManager.merge(employee);
         transaction.commit();
         entityManager.close();
         return employee;
     }
 
-    
+
 
     public Employee updateEmployee(int id, String newName, double newSalary) {
         EntityManager entityManager = emf.createEntityManager();
