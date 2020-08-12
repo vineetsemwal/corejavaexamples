@@ -14,7 +14,7 @@ public class FileCopyExample {
             File outFile = new File("C:/Users/vineet/work/ioexperiment/copy.txt");
             outputStream=new FileOutputStream(outFile);
             inputStream = new FileInputStream(inputFile);
-            bin=new BufferedInputStream(inputStream);
+            bin=new BufferedInputStream(inputStream,2000); // file size 8000
             bout=new BufferedOutputStream(outputStream);
             int redByte=0;
             int totalBytes=0;
