@@ -46,4 +46,10 @@ public class EmployeeServiceImpl implements IEmployeeService{
             throw new InvalidArgumentException("argument is null");
         }
     }
+
+    @Override
+    public Employee findEmployeeByName(String empName) {
+       Employee employee =dao.findEmployeeByName(empName);
+       return employee;
+    }
 }

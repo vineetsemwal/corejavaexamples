@@ -24,8 +24,11 @@ public class EmployeeUi {
             employee2 = service.save(employee2);
 
             int id1 = employee1.getId();
-            Employee fetched = service.findEmployeeById(id1);
-            System.out.println("fetcehd employee =" + fetched.getName() + " " + fetched.getAge() + " " + fetched.getSalary());
+            Employee fetched1 = service.findEmployeeById(id1);
+            System.out.println("fetcehd employee =" + fetched1.getName() + " " + fetched1.getAge() + " " + fetched1.getSalary());
+
+            Employee fetched2=service.findEmployeeByName("vineel");
+            System.out.println("fetched by name="+fetched2.getName()+" "+fetched2.getId());
         }catch (EmployeeNotFoundException e){
             e.printStackTrace();
         }

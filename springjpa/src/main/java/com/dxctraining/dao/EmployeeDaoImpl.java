@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Repository
 public class EmployeeDaoImpl implements IEmployeeDao{
@@ -42,4 +45,18 @@ public class EmployeeDaoImpl implements IEmployeeDao{
      Employee employee= findEmployeeById(id) ;
      entityManager.remove(employee);
     }
+
+    @Override
+    public Employee findEmployeeByName(String empName){
+        String jpaql="from Employee where name=:ename";
+        Query query= entityManager.createQuery(jpaql);
+        query.setParameter("ename",empName);
+        List<Employee>list=query.getResultList();
+        Employee employee=null;
+        if(!list.isEmpty()){
+           employee=list.get(0);
+        }
+        return employee;
+    }
+
 }

@@ -11,4 +11,6 @@ public interface IEmployeeDao {
     Employee save(Employee employee);
 
     void remove(int id);
+
+    Employee findEmployeeByName(String empName);
 }
