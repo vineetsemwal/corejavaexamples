@@ -2,6 +2,7 @@ package com.dxctraining.dao;
 
 import com.dxctraining.entities.Employee;
 import com.dxctraining.exceptions.EmployeeNotFoundException;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -11,14 +12,15 @@ import javax.persistence.PersistenceContext;
 public class EmployeeDaoImpl implements IEmployeeDao{
 
     //equivalent to @Autowired
+    //@Autowired
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public Employee findEmployeeById(int id) {
-        Employee employee=entityManager.find(Employee.class,id);
+    public Employee findEmployeeById(int idArg) {
+        Employee employee=entityManager.find(Employee.class,idArg);
         if(employee==null){
-            throw new EmployeeNotFoundException("employee not found for id="+id);
+            throw new EmployeeNotFoundException("employee not found for id="+idArg);
         }
         return employee;
     }
@@ -31,13 +33,13 @@ public class EmployeeDaoImpl implements IEmployeeDao{
 
     @Override
     public Employee save(Employee employee) {
-        entityManager.persist(employee);
+        entityManager.persist(employee);//insertion
         return employee;
     }
 
     @Override
     public void remove(int id) {
-     Employee employee= entityManager.find(Employee.class,id) ;
+     Employee employee= findEmployeeById(id) ;
      entityManager.remove(employee);
     }
 }

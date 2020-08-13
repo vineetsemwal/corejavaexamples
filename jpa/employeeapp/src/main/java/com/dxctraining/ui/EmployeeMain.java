@@ -3,9 +3,6 @@ package com.dxctraining.ui;
 import com.dxctraining.entities.Employee;
 
 import javax.persistence.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 
 public class EmployeeMain {
@@ -72,7 +69,8 @@ public class EmployeeMain {
 
     public void displayAllEmployees() {
         EntityManager entityManager = emf.createEntityManager();
-        TypedQuery<Employee> query = entityManager.createQuery("from Employee", Employee.class);
+        String jpaql="from Employee";
+        TypedQuery<Employee> query = entityManager.createQuery(jpaql, Employee.class);
         List<Employee> list = query.getResultList();
         for (Employee employee : list) {
             System.out.println("fetched employee=" + employee.getId() + " " + employee.getName());
@@ -84,7 +82,8 @@ public class EmployeeMain {
 
     public void displayEmployeesByName(String empName) {
         EntityManager entityManager = emf.createEntityManager();
-        TypedQuery<Employee> query = entityManager.createQuery("from Employee where name=:ename", Employee.class);
+        String jpaql="from Employee where name=:ename";
+        TypedQuery<Employee> query = entityManager.createQuery(jpaql, Employee.class);
         query.setParameter("ename", empName);
         List<Employee> list = query.getResultList();
         for (Employee employee : list) {

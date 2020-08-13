@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+// transactional will inform spring that it has to open transaction at every method in this class
 @Transactional
 @Service
 public class EmployeeServiceImpl implements IEmployeeService{
