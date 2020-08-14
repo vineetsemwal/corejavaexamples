@@ -1,9 +1,8 @@
 package com.dxctraining.address.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.dxctraining.employee.entities.Employee;
+
+import javax.persistence.*;
 
 @Table(name = "addresses")
 @Entity
@@ -18,6 +17,7 @@ public class Address {
     private String houseAddress;
 
     public Address(){}
+
 
     public Address(String city,String house){
         this.city=city;
