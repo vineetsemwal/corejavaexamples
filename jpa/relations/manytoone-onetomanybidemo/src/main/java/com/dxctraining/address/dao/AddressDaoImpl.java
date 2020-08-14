@@ -24,8 +24,7 @@ public class AddressDaoImpl implements IAddressDao{
     public Address findAddressById(int id) {
       Address address=  entityManager.find(Address.class,id);
       Set<Employee> employees=address.getEmployees();
-      for (Employee e:employees){
-      }
+      employees.size();
       return address;
     }
 }
