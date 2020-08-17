@@ -17,6 +17,7 @@ public class EmployeeController {
     @Autowired
     private IEmployeeService employeeService;
 
+    /*
     @PostConstruct
     public void init(){
         Employee employee1=new Employee("vineel",21,5000);
@@ -25,7 +26,7 @@ public class EmployeeController {
         Employee employee2=new Employee("fazil",22,3000);
         employee2=employeeService.save(employee2);
     }
-
+*/
 
     /**
      *
@@ -51,6 +52,30 @@ public class EmployeeController {
         return modelAndView;
     }
 
+    /**
+     *
+     * for rendering register page
+     */
+    @GetMapping("/register")
+    public ModelAndView registerPage(){
+        System.out.println("inside registerpage method");
+        ModelAndView mv=new ModelAndView("register");
+        return mv;
+    }
+
+    /**
+     *
+     * processing register form submission here
+     */
+    @GetMapping("/processregister")
+    public ModelAndView processRegister(@RequestParam("ename")String name,@RequestParam("salary")double salary,
+                                        @RequestParam("age")int age){
+        System.out.println("inside processregister method, name="+name+" age="+age+" salary="+salary);
+        Employee employee=new Employee(name,age,salary);
+        employee=employeeService.save(employee);
+        ModelAndView mv=new ModelAndView("details","employee",employee);
+        return mv;
+    }
 
 
 }
