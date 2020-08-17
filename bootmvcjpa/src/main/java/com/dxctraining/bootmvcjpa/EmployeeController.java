@@ -1,6 +1,8 @@
-package com.dxctraining.bootmvc;
+package com.dxctraining.bootmvcjpa;
 
-import com.dxctraining.bootmvc.entities.Employee;
+import com.dxctraining.bootmvcjpa.entities.Employee;
+import com.dxctraining.bootmvcjpa.service.IEmployeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,18 +14,16 @@ import java.util.*;
 @Controller
 public class EmployeeController {
 
-    private Map<Integer, Employee> store =new HashMap<>();
+    @Autowired
+    private IEmployeeService employeeService;
 
     @PostConstruct
     public void init(){
         Employee employee1=new Employee("vineel",21,5000);
-        employee1.setId(1);
-        store.put(1,employee1);
+        employee1=employeeService.save(employee1);
 
         Employee employee2=new Employee("fazil",22,3000);
-        employee2.setId(2);
-        store.put(2,employee2);
-
+        employee2=employeeService.save(employee2);
     }
 
 
@@ -33,7 +33,7 @@ public class EmployeeController {
      */
     @GetMapping("/profile")
     public ModelAndView employeeDetails(@RequestParam("id")int id){
-       Employee emp=findEmployeeById(id);
+       Employee emp=employeeService.findEmployeeById(id);
        // details is name of view
         // employee is name of model object
         // emp is model data
@@ -46,21 +46,9 @@ public class EmployeeController {
      */
     @GetMapping("/listall")
     public ModelAndView all(){
-       Collection<Employee>values=findAll();
+       List<Employee>values=employeeService.allEmployees();
         ModelAndView modelAndView=new ModelAndView("list","employees",values);
         return modelAndView;
-    }
-
-
-    public Employee findEmployeeById(int id){
-       Employee employee= store.get(id);
-       return employee;
-    }
-
-
-    public Collection<Employee>findAll() {
-        Collection<Employee> values = store.values();
-        return values;
     }
 
 

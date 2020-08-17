@@ -1,6 +1,9 @@
-package com.dxctraining.consoleapp.entities;
+package com.dxctraining.bootmvcjpa.entities;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "employees")//table name

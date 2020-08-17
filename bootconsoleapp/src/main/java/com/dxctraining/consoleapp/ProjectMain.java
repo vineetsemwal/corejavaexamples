@@ -1,5 +1,6 @@
 package com.dxctraining.consoleapp;
 
+import com.dxctraining.consoleapp.service.EmployeeServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +11,8 @@ import org.springframework.context.annotation.Configuration;
  * @SpringBootapplication equivalent to 3 things
  * 1)@Configuration : so we dont have to provide on our own
  * 2)@ComponentScan: so we dont have to provide on our own
- * 3) @AutoConfiguration so we dont have to provide on our own
+ * 3) @AutoConfiguration : for libraries in our project classpath,
+ * boot will provide configuration
  */
 @SpringBootApplication
 public class ProjectMain {
@@ -19,6 +21,5 @@ public class ProjectMain {
 		SpringApplication.run(ProjectMain.class, args);
 
 	}
-
 
 }
