@@ -1,10 +1,13 @@
 package com.dxctraining.bootmvcjpa;
 
+import com.dxctraining.bootmvcjpa.dto.CreateEmployeeRequest;
 import com.dxctraining.bootmvcjpa.entities.Employee;
 import com.dxctraining.bootmvcjpa.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -68,7 +71,8 @@ public class EmployeeController {
      * processing register form submission here
      */
     @GetMapping("/processregister")
-    public ModelAndView processRegister(@RequestParam("ename")String name,@RequestParam("salary")double salary,
+    public ModelAndView processRegister(@RequestParam("ename")String name,
+                                        @RequestParam("salary")double salary,
                                         @RequestParam("age")int age){
         System.out.println("inside processregister method, name="+name+" age="+age+" salary="+salary);
         Employee employee=new Employee(name,age,salary);
@@ -76,6 +80,37 @@ public class EmployeeController {
         ModelAndView mv=new ModelAndView("details","employee",employee);
         return mv;
     }
+
+
+    /**
+     *
+     * for rendering register page
+     */
+    @GetMapping("/postregister")
+    public ModelAndView postRegisterPage(){
+        System.out.println("inside registerpage method");
+        CreateEmployeeRequest requestData=new CreateEmployeeRequest();
+        ModelAndView mv=new ModelAndView("postregister","employee",requestData);
+        return mv;
+    }
+
+    /**
+     *
+     * processing register form submission here
+     */
+    @PostMapping("/processpostregister")
+    public ModelAndView processRegister(@ModelAttribute("employee") CreateEmployeeRequest requestData){
+        String name=requestData.getName();
+        int age=requestData.getAge();
+        double salary=requestData.getSalary();
+        System.out.println("inside processregister method, name="+name+
+                " age="+age+" salary="+salary);
+        Employee employee=new Employee(name,age,salary);
+        employee=employeeService.save(employee);
+        ModelAndView mv=new ModelAndView("details","employee",employee);
+        return mv;
+    }
+
 
 
 }
