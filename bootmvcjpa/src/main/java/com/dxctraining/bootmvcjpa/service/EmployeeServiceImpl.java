@@ -60,4 +60,12 @@ public class EmployeeServiceImpl implements IEmployeeService{
         List<Employee>employees=dao.allEmployees();
         return employees;
     }
+
+    @Override
+    public boolean authenticate(int id, String password){
+       Employee employee= dao.findEmployeeById(id);
+       String storedPassword=employee.getPassword();
+       boolean equals= storedPassword.equals(password);
+       return equals;
+    }
 }

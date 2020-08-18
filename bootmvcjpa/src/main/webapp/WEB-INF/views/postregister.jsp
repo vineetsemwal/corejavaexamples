@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<h1>Employee Registeration </h1>
+<h1>Employee Registeration submits post request</h1>
 
 <form:form method="post" action="/processpostregister" modelAttribute="employee">
 
@@ -39,6 +39,15 @@
 <form:input path="age"/>
 
 </div>
+
+
+<div>
+<label>Password</label>
+<form:input path="password"/>
+
+</div>
+
+
 
 <input type="submit" value="Create Employee">
 

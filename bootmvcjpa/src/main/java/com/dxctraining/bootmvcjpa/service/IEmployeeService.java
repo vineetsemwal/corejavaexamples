@@ -19,4 +19,6 @@ public interface IEmployeeService {
 
     List<Employee> allEmployees();
 
+    boolean authenticate(int id, String password);
+
 }

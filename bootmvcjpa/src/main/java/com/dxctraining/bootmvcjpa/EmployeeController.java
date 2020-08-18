@@ -1,8 +1,10 @@
 package com.dxctraining.bootmvcjpa;
 
 import com.dxctraining.bootmvcjpa.dto.CreateEmployeeRequest;
+import com.dxctraining.bootmvcjpa.dto.SessionData;
 import com.dxctraining.bootmvcjpa.entities.Employee;
 import com.dxctraining.bootmvcjpa.service.IEmployeeService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,9 @@ public class EmployeeController {
 
     @Autowired
     private IEmployeeService employeeService;
+
+    @Autowired
+    private SessionData sessionData;
 
     /*
     @PostConstruct
@@ -37,6 +42,9 @@ public class EmployeeController {
      */
     @GetMapping("/profile")
     public ModelAndView employeeDetails(@RequestParam("id")int id){
+        if(sessionData.getId()<0){
+            return new ModelAndView("login");
+        }
        Employee emp=employeeService.findEmployeeById(id);
        // details is name of view
         // employee is name of model object
@@ -50,7 +58,10 @@ public class EmployeeController {
      */
     @GetMapping("/listall")
     public ModelAndView all(){
-       List<Employee>values=employeeService.allEmployees();
+        if(sessionData.getId()<0){
+            return new ModelAndView("login");
+        }
+        List<Employee>values=employeeService.allEmployees();
         ModelAndView modelAndView=new ModelAndView("list","employees",values);
         return modelAndView;
     }
@@ -73,9 +84,10 @@ public class EmployeeController {
     @GetMapping("/processregister")
     public ModelAndView processRegister(@RequestParam("ename")String name,
                                         @RequestParam("salary")double salary,
-                                        @RequestParam("age")int age){
+                                        @RequestParam("age")int age,
+                                        @RequestParam("password")String password){
         System.out.println("inside processregister method, name="+name+" age="+age+" salary="+salary);
-        Employee employee=new Employee(name,age,salary);
+        Employee employee=new Employee(name,password,age,salary);
         employee=employeeService.save(employee);
         ModelAndView mv=new ModelAndView("details","employee",employee);
         return mv;
@@ -103,14 +115,40 @@ public class EmployeeController {
         String name=requestData.getName();
         int age=requestData.getAge();
         double salary=requestData.getSalary();
+        String password=requestData.getPassword();
         System.out.println("inside processregister method, name="+name+
                 " age="+age+" salary="+salary);
-        Employee employee=new Employee(name,age,salary);
+        Employee employee=new Employee(name,password,age,salary);
         employee=employeeService.save(employee);
         ModelAndView mv=new ModelAndView("details","employee",employee);
         return mv;
     }
 
+    @GetMapping("/login")
+    public ModelAndView login(){
+        ModelAndView modelAndView=new ModelAndView("login");
+        return modelAndView;
+    }
+
+    @GetMapping("/processlogin")
+    public ModelAndView processLogin(@RequestParam("id") int id, @RequestParam("password") String password){
+         boolean correct=employeeService.authenticate(id,password);
+         if(!correct){
+          ModelAndView modelAndView= new ModelAndView("login");
+          return modelAndView;
+         }
+         sessionData.setId(id);
+         Employee employee=employeeService.findEmployeeById(id);
+         ModelAndView modelAndView=new ModelAndView("details","employee",employee);
+         return modelAndView;
+    }
+
+    @GetMapping("/logout")
+    public ModelAndView logout(){
+       sessionData.clear();
+       ModelAndView modelAndView=new ModelAndView("login");
+       return modelAndView;
+    }
 
 
 }

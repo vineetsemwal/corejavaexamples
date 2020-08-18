@@ -19,14 +19,25 @@ public class Employee {
 
     private int age;
 
+    private String password;
+
     public Employee() {
 
     }
 
-    public Employee(String name, int age, double salary) {
+    public Employee(String name,String password, int age, double salary) {
         this.name = name;
+        this.password=password;
         this.salary = salary;
         this.age = age;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId() {

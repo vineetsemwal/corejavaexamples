@@ -20,5 +20,8 @@ salary is <c:out value="${employee.salary}"  />
 <br>
 age is <c:out value="${employee.age}"  />
 
+
+<a href="/logout"> Log out </a>
+
 </body>
 </html>

@@ -10,33 +10,19 @@
 </head>
 <body>
 
-<h1>Employee Registeration submits get request</h1>
+<h1>Login Page</h1>
 
-<form method="get" action="/processregister">
+<form method="get" action="/processlogin">
 
 <div>
 
-<label>Name</label>
-<input type="text"  name="ename">
+<label>Id</label>
+<input type="number"  name="id">
 
 </div>
 
 <div>
 
-<label>Salary</label>
-<input type="number"  name="salary">
-
-</div>
-
-
-<div>
-
-<label>Age</label>
-<input type="number"  name="age">
-
-</div>
-
-<div>
 <label>Password</label>
 <input type="password"  name="password">
 
