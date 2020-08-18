@@ -11,6 +11,8 @@ public class SessionData {
 
     private int id=-1;
 
+    private boolean loggedIn;
+
     public SessionData(int id){
         this.id=id;
     }
@@ -23,11 +25,18 @@ public class SessionData {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+
+    public void saveLogin(int id){
+        this.loggedIn=true;
+        this.id=id;
     }
 
     public void  clear(){
         id=-1;
+        loggedIn=false;
+    }
+
+    public boolean isLoggedIn(){
+        return loggedIn;
     }
 }

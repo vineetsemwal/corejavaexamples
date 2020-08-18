@@ -42,7 +42,7 @@ public class EmployeeController {
      */
     @GetMapping("/profile")
     public ModelAndView employeeDetails(@RequestParam("id")int id){
-        if(sessionData.getId()<0){
+        if(!sessionData.isLoggedIn()){
             return new ModelAndView("login");
         }
        Employee emp=employeeService.findEmployeeById(id);
@@ -58,7 +58,7 @@ public class EmployeeController {
      */
     @GetMapping("/listall")
     public ModelAndView all(){
-        if(sessionData.getId()<0){
+        if(!sessionData.isLoggedIn()){
             return new ModelAndView("login");
         }
         List<Employee>values=employeeService.allEmployees();
@@ -137,7 +137,7 @@ public class EmployeeController {
           ModelAndView modelAndView= new ModelAndView("login");
           return modelAndView;
          }
-         sessionData.setId(id);
+         sessionData.saveLogin(id);
          Employee employee=employeeService.findEmployeeById(id);
          ModelAndView modelAndView=new ModelAndView("details","employee",employee);
          return modelAndView;
@@ -149,6 +149,7 @@ public class EmployeeController {
        ModelAndView modelAndView=new ModelAndView("login");
        return modelAndView;
     }
+
 
 
 }
