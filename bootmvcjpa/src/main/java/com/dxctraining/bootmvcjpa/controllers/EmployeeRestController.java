@@ -3,6 +3,8 @@ package com.dxctraining.bootmvcjpa.controllers;
 import com.dxctraining.bootmvcjpa.dto.CreateEmployeeRequest;
 import com.dxctraining.bootmvcjpa.dto.UpdateEmployeeRequest;
 import com.dxctraining.bootmvcjpa.entities.Employee;
+import com.dxctraining.bootmvcjpa.exceptions.EmployeeNotFoundException;
+import com.dxctraining.bootmvcjpa.exceptions.InvalidArgumentException;
 import com.dxctraining.bootmvcjpa.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,9 +16,11 @@ public class EmployeeRestController {
 
     @Autowired
     private IEmployeeService service;
+
     /*
       uri is /employees/add
-  */
+      url http://localhost:8585/employees/add
+   */
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public Employee create(@RequestBody CreateEmployeeRequest requestData) {
@@ -32,30 +36,44 @@ public class EmployeeRestController {
     /*
     uri is /employees/get
      /employees/get?id=10
-    /employees/get/10
+    /employees/get/abc/10
      */
     @GetMapping("/get/{id}")
-    @ResponseStatus(HttpStatus.OK)
     public Employee findEmployee(@PathVariable("id") int id) {
         Employee employee = service.findEmployeeById(id);
         return employee;
     }
 
     /**
-     *  uri is /employees/update
-     *
+     * uri is /employees/update
      */
     @PutMapping("/update")
-    public Employee updateEmployee(@RequestBody UpdateEmployeeRequest requestData){
+    public Employee updateEmployee(@RequestBody UpdateEmployeeRequest requestData) {
         String name = requestData.getName();
         String password = requestData.getPassword();
         int age = requestData.getAge();
-        int id=requestData.getId();
+        int id = requestData.getId();
         double salary = requestData.getSalary();
-        Employee employee=new Employee(name,password,age,salary);
+        Employee employee = new Employee(name, password, age, salary);
         employee.setId(id);
-        employee=service.update(employee);
+        employee = service.update(employee);
         return employee;
+    }
+
+
+    @ExceptionHandler(EmployeeNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String handleEmployeeNotFound(EmployeeNotFoundException e){
+        System.out.println("inside handleEmployeeNotFound");
+        String msg=e.getMessage();
+        return msg;
+    }
+
+    @ExceptionHandler(InvalidArgumentException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String handleInvalidArgument(InvalidArgumentException e){
+        System.out.println("inside handleInvalidArgument");
+        return e.getMessage();
     }
 
 }
