@@ -1,4 +1,4 @@
-package com.dxctraining.bootmvcjpa;
+package com.dxctraining.bootmvcjpa.controllers;
 
 import com.dxctraining.bootmvcjpa.dto.CreateEmployeeRequest;
 import com.dxctraining.bootmvcjpa.dto.SessionData;
@@ -25,16 +25,16 @@ public class EmployeeController {
     @Autowired
     private SessionData sessionData;
 
-    /*
+
     @PostConstruct
     public void init(){
-        Employee employee1=new Employee("vineel",21,5000);
+        Employee employee1=new Employee("vineel","abcd",21,5000);
         employee1=employeeService.save(employee1);
 
-        Employee employee2=new Employee("fazil",22,3000);
+        Employee employee2=new Employee("fazil","1234",22,3000);
         employee2=employeeService.save(employee2);
     }
-*/
+
 
     /**
      *

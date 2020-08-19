@@ -1,4 +1,4 @@
-package com.dxctraining.bootmvcjpa;
+package com.dxctraining.bootmvcjpa.controllers;
 
 
 import org.springframework.stereotype.Controller;
