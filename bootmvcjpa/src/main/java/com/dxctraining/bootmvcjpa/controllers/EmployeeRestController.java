@@ -61,20 +61,6 @@ public class EmployeeRestController {
     }
 
 
-    @ExceptionHandler(EmployeeNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleEmployeeNotFound(EmployeeNotFoundException e){
-        System.out.println("inside handleEmployeeNotFound");
-        String msg=e.getMessage();
-        return msg;
-    }
-
-    @ExceptionHandler(InvalidArgumentException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String handleInvalidArgument(InvalidArgumentException e){
-        System.out.println("inside handleInvalidArgument");
-        return e.getMessage();
-    }
 
 }
 
