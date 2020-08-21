@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dxctraining</groupId>
-    <artifactId>deptmgt</artifactId>
+    <artifactId>empmgt</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>department management</name>
-    <description>service which manages departments</description>
+    <name>gateway</name>
+    <description>service which manages employees</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -25,6 +25,8 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <hsqldb.version>2.5.0</hsqldb.version>
+        <mysql-driver.version>8.0.21</mysql-driver.version>
+
     </properties>
 
     <dependencies>
@@ -65,6 +67,18 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
+
+
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+   <!--
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-driver.version}</version>
+        </dependency>
+-->
+
 
         <!-- https://mvnrepository.com/artifact/org.hsqldb/hsqldb -->
         <dependency>
