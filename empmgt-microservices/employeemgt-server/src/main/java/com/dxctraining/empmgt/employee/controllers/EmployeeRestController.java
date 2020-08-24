@@ -7,6 +7,7 @@ import com.dxctraining.empmgt.employee.dto.UpdateEmployeeRequest;
 import com.dxctraining.empmgt.employee.entities.Employee;
 import com.dxctraining.empmgt.employee.service.IEmployeeService;
 import com.dxctraining.empmgt.employee.util.EmployeeUtil;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class EmployeeRestController {
     private RestTemplate restTemplate;
 
     String baseDepartmentUrl = "http://deptmgt/departments/";
-/*
+
 
     private DepartmentDto cachedTopDepartment =null;
 
@@ -40,7 +41,6 @@ public class EmployeeRestController {
     public void setCachedTopDepartment(DepartmentDto dto){
         this.cachedTopDepartment=dto;
     }
-    */
 
     /*
       uri is /employees/add
@@ -107,10 +107,12 @@ public class EmployeeRestController {
      *
      */
     @GetMapping("/topdepartment")
+    @HystrixCommand(fallbackMethod = "fetchAllForCachedTopDepartment")
     public List<EmployeeDto> fetchAllForTopDepartment() {
         System.out.println("inside fetchAllForTopDepartment");
         DepartmentDto departmentDto=fetchBestDepartment();
         int deptId=departmentDto.getId();
+        System.out.println("cached top department id="+deptId);
         List<Employee> list = employeeService.allEmployeesByDepartment(deptId);
         List<EmployeeDto>response=new ArrayList<>();
         DepartmentDto department= fetchFromDepartmentAppById(deptId);
@@ -122,6 +124,23 @@ public class EmployeeRestController {
     }
 
 
+
+    /**
+     * fetches employees of best department
+     *
+     */
+    public List<EmployeeDto> fetchAllForCachedTopDepartment() {
+        System.out.println("inside  fetchAllForCachedTopDepartment");
+        DepartmentDto department=getCachedTopDepartment();
+        int deptId=department.getId();
+        List<Employee> list = employeeService.allEmployeesByDepartment(deptId);
+        List<EmployeeDto>response=new ArrayList<>();
+        for (Employee employee:list){
+            EmployeeDto dto=employeeUtil.employeeDto(employee,deptId,department.getName(), department.getRating());
+            response.add(dto);
+        }
+        return response;
+    }
 
     /**
      * uri is /employees/update
@@ -154,6 +173,7 @@ public class EmployeeRestController {
     public DepartmentDto fetchBestDepartment(){
         String url=baseDepartmentUrl+"/best";
         DepartmentDto dto=restTemplate.getForObject(url,DepartmentDto.class);
+        setCachedTopDepartment(dto);//cached/stored here
         return dto;
     }
 
