@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Repository
 public class DepartmentDaoImpl implements IDepartmentDao {
@@ -28,4 +30,14 @@ public class DepartmentDaoImpl implements IDepartmentDao {
         return department;
     }
 
+
+    @Override
+    public Department bestDepartment() {
+        String jpaql="from Department order by rating desc";
+        TypedQuery<Department>query= entityManager.createQuery(jpaql,Department.class);
+        query.setMaxResults(1);
+        List<Department>list= query.getResultList();
+        Department department= list.get(0);
+       return department;
+    }
 }

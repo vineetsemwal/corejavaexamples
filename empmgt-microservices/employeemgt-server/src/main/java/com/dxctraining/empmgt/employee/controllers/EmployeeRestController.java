@@ -28,6 +28,20 @@ public class EmployeeRestController {
     @Autowired
     private RestTemplate restTemplate;
 
+    String baseDepartmentUrl = "http://deptmgt/departments/";
+/*
+
+    private DepartmentDto cachedTopDepartment =null;
+
+    public DepartmentDto getCachedTopDepartment(){
+        return cachedTopDepartment;
+    }
+
+    public void setCachedTopDepartment(DepartmentDto dto){
+        this.cachedTopDepartment=dto;
+    }
+    */
+
     /*
       uri is /employees/add
       url http://localhost:8585/employees/add
@@ -43,7 +57,7 @@ public class EmployeeRestController {
         Employee employee = new Employee(name, password, departmentId, age, salary);
         employee = employeeService.save(employee);
         DepartmentDto department = fetchFromDepartmentAppById(departmentId);
-        EmployeeDto response = employeeUtil.employeeDto(employee, departmentId, department.getName());
+        EmployeeDto response = employeeUtil.employeeDto(employee, departmentId, department.getName(),department.getRating());
         return response;
     }
 
@@ -58,7 +72,7 @@ public class EmployeeRestController {
         Employee employee = employeeService.findEmployeeById(id);
         int deptId = employee.getDepartmentId();
         DepartmentDto department = fetchFromDepartmentAppById(deptId);
-        EmployeeDto response = employeeUtil.employeeDto(employee, deptId, department.getName());
+        EmployeeDto response = employeeUtil.employeeDto(employee, deptId, department.getName(), department.getRating());
         return response;
     }
 
@@ -70,7 +84,7 @@ public class EmployeeRestController {
         for (Employee employee:list){
             int  deptId=employee.getDepartmentId();
             DepartmentDto department= fetchFromDepartmentAppById(deptId);
-            EmployeeDto dto=employeeUtil.employeeDto(employee,deptId,department.getName());
+            EmployeeDto dto=employeeUtil.employeeDto(employee,deptId,department.getName(), department.getRating());
             response.add(dto);
         }
         return response;
@@ -82,11 +96,31 @@ public class EmployeeRestController {
         List<EmployeeDto>response=new ArrayList<>();
         DepartmentDto department= fetchFromDepartmentAppById(deptId);
         for (Employee employee:list){
-            EmployeeDto dto=employeeUtil.employeeDto(employee,deptId,department.getName());
+            EmployeeDto dto=employeeUtil.employeeDto(employee,deptId,department.getName(), department.getRating());
             response.add(dto);
         }
         return response;
     }
+
+    /**
+     * fetches employees of best department
+     *
+     */
+    @GetMapping("/topdepartment")
+    public List<EmployeeDto> fetchAllForTopDepartment() {
+        System.out.println("inside fetchAllForTopDepartment");
+        DepartmentDto departmentDto=fetchBestDepartment();
+        int deptId=departmentDto.getId();
+        List<Employee> list = employeeService.allEmployeesByDepartment(deptId);
+        List<EmployeeDto>response=new ArrayList<>();
+        DepartmentDto department= fetchFromDepartmentAppById(deptId);
+        for (Employee employee:list){
+            EmployeeDto dto=employeeUtil.employeeDto(employee,deptId,department.getName(), department.getRating());
+            response.add(dto);
+        }
+        return response;
+    }
+
 
 
     /**
@@ -106,7 +140,7 @@ public class EmployeeRestController {
         employee.setSalary(salary);
         employee = employeeService.update(employee);
         DepartmentDto department=fetchFromDepartmentAppById(employee.getDepartmentId());
-        EmployeeDto response = employeeUtil.employeeDto(employee, department.getId(), department.getName());
+        EmployeeDto response = employeeUtil.employeeDto(employee, department.getId(), department.getName(), department.getRating());
         return response;
     }
 
@@ -116,11 +150,22 @@ public class EmployeeRestController {
         return result;
     }
 
+
+    public DepartmentDto fetchBestDepartment(){
+        String url=baseDepartmentUrl+"/best";
+        DepartmentDto dto=restTemplate.getForObject(url,DepartmentDto.class);
+        return dto;
+    }
+
+
     public DepartmentDto fetchFromDepartmentAppById(int deptId) {
-        String url = "http://deptmgt/departments/get/" + deptId;
+        String url = baseDepartmentUrl+"/get/" + deptId;
         DepartmentDto dto = restTemplate.getForObject(url, DepartmentDto.class);
         return dto;
     }
+
+
+
 
 
 }

@@ -25,4 +25,9 @@ public class DepartmentServiceImpl implements IDepartmentService {
         return department;
     }
 
+    @Override
+    public Department bestDepartment() {
+        Department department=dao.bestDepartment();
+        return department;
+    }
 }

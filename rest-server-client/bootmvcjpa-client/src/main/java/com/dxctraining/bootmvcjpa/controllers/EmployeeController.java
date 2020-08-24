@@ -86,6 +86,7 @@ public class EmployeeController {
         System.out.println("inside processregister method, name="+name+" age="+age+" salary="+salary);
         CreateEmployeeRequest employee=new CreateEmployeeRequest(name,password,age,salary);
         String url=baseUrl+"/add";
+       //creating post request
         EmployeeDto employeeDto=restTemplate.postForObject(url,employee,EmployeeDto.class);
         ModelAndView mv=new ModelAndView("details","employee",employeeDto);
         return mv;

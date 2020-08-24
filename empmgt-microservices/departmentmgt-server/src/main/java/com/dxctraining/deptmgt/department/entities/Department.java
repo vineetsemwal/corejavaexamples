@@ -15,6 +15,18 @@ public class Department {
 
     private String name;
 
+    private double rating;
+
+    public Department(){
+
+    }
+
+    public Department(String name, double rating){
+        this.name=name;
+        this.rating=rating;
+    }
+
+
     public Integer getId() {
         return id;
     }
@@ -29,6 +41,14 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setRating(double rating){
+        this.rating=rating;
+    }
+
+    public double getRating(){
+        return rating;
     }
 
     @Override

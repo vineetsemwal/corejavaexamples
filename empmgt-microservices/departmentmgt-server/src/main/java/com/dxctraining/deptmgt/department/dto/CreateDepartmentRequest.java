@@ -11,4 +11,16 @@ public class CreateDepartmentRequest {
     public void setName(String name) {
         this.name = name;
     }
+
+    private double rating;
+
+    public double getRating(){
+        return rating;
+    }
+
+    public void setRating(double rating){
+        this.rating=rating;
+    }
+
+
 }

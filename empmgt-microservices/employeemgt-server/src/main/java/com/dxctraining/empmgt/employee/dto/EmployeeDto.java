@@ -16,6 +16,8 @@ public class EmployeeDto {
 
     private String departmentName;
 
+    private double rating;
+
     public EmployeeDto(){
 
     }
@@ -82,5 +84,13 @@ public class EmployeeDto {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
     }
 }

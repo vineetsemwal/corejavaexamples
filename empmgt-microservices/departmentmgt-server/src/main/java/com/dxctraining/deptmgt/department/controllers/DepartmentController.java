@@ -21,6 +21,7 @@ public class DepartmentController {
     public DepartmentDto add(@RequestBody CreateDepartmentRequest requestData) {
         Department department = new Department();
         department.setName(requestData.getName());
+        department.setRating(requestData.getRating());
         department = service.save(department);
         DepartmentDto response = toDto(department);
         return response;
@@ -33,11 +34,21 @@ public class DepartmentController {
         return response;
     }
 
+    @GetMapping("/best")
+    public DepartmentDto bestDepartment() {
+        Department department = service.bestDepartment();
+        System.out.println("best dept fetched="+department.getId());
+        DepartmentDto dto = toDto(department);
+        return dto;
+    }
+
     public DepartmentDto toDto(Department department) {
         DepartmentDto dto = new DepartmentDto();
         dto.setId(department.getId());
         dto.setName(department.getName());
+        dto.setRating(department.getRating());
         return dto;
     }
+
 
 }
