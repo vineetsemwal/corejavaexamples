@@ -103,7 +103,7 @@ public class EmployeeRestController {
     }
 
     /**
-     * fetches employees of best department
+     * fetches employees of best department, if the method fails for some reason, alternative method will be executed
      *
      */
     @GetMapping("/topdepartment")
@@ -126,7 +126,7 @@ public class EmployeeRestController {
 
 
     /**
-     * fetches employees of best department
+     * fallback(alternative) method for fetching employees of best department
      *
      */
     public List<EmployeeDto> fetchAllForCachedTopDepartment() {
