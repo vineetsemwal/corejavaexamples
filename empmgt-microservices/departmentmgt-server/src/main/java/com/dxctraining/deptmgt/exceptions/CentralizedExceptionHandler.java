@@ -1,4 +1,4 @@
-package com.dxctraining.bootmvcjpa.exceptions;
+package com.dxctraining.deptmgt.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,12 +1,10 @@
-package com.dxctraining.bootmvcjpa.department.entities.service;
+package com.dxctraining.deptmgt.department.service;
 
-import com.dxctraining.bootmvcjpa.department.entities.Department;
-import com.dxctraining.bootmvcjpa.department.entities.dao.IDepartmentDao;
+import com.dxctraining.deptmgt.department.entities.Department;
+import com.dxctraining.deptmgt.department.dao.IDepartmentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Set;
 
 @Transactional
 @Service

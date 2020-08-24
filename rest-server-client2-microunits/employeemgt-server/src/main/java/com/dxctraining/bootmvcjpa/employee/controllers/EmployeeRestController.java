@@ -117,7 +117,7 @@ public class EmployeeRestController {
     }
 
     public DepartmentDto fetchFromDepartmentAppById(int deptId) {
-        String url = "http://localhost:8587/departments/get/" + deptId;
+        String url = "http://localhost:8586/departments/get/" + deptId;
         DepartmentDto dto = restTemplate.getForObject(url, DepartmentDto.class);
         return dto;
     }

@@ -1,4 +1,4 @@
-package com.dxctraining.bootmvcjpa.department.entities;
+package com.dxctraining.deptmgt.department.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

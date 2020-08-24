@@ -1,4 +1,4 @@
-package com.dxctraining.bootmvcjpa.exceptions;
+package com.dxctraining.deptmgt.exceptions;
 
 public class DepartmentNotFoundException extends RuntimeException{
 

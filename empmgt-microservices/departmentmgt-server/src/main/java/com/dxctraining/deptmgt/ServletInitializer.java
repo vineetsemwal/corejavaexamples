@@ -1,4 +1,4 @@
-package com.dxctraining.bootmvcjpa;
+package com.dxctraining.deptmgt;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

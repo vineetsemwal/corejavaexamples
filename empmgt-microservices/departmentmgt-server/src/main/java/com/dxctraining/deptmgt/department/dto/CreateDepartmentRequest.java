@@ -1,4 +1,4 @@
-package com.dxctraining.bootmvcjpa.department.dto;
+package com.dxctraining.deptmgt.department.dto;
 
 public class CreateDepartmentRequest {
 

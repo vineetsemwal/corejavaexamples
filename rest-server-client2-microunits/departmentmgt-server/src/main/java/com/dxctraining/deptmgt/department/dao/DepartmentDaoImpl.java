@@ -1,15 +1,11 @@
-package com.dxctraining.bootmvcjpa.department.entities.dao;
+package com.dxctraining.deptmgt.department.dao;
 
-import com.dxctraining.bootmvcjpa.department.entities.Department;
-import com.dxctraining.bootmvcjpa.exceptions.DepartmentNotFoundException;
+import com.dxctraining.deptmgt.department.entities.Department;
+import com.dxctraining.deptmgt.exceptions.DepartmentNotFoundException;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
-import java.util.Set;
 
 @Repository
 public class DepartmentDaoImpl implements IDepartmentDao {
