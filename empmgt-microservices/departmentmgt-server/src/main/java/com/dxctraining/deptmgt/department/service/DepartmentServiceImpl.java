@@ -1,7 +1,7 @@
-package com.dxctraining.deptmgt.department.entities.service;
+package com.dxctraining.deptmgt.department.service;
 
 import com.dxctraining.deptmgt.department.entities.Department;
-import com.dxctraining.deptmgt.department.entities.dao.IDepartmentDao;
+import com.dxctraining.deptmgt.department.dao.IDepartmentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

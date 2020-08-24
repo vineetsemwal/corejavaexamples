@@ -1,9 +1,9 @@
-package com.dxctraining.deptmgt.department.entities.controllers;
+package com.dxctraining.deptmgt.department.controllers;
 
 import com.dxctraining.deptmgt.department.dto.CreateDepartmentRequest;
 import com.dxctraining.deptmgt.department.dto.DepartmentDto;
 import com.dxctraining.deptmgt.department.entities.Department;
-import com.dxctraining.deptmgt.department.entities.service.IDepartmentService;
+import com.dxctraining.deptmgt.department.service.IDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

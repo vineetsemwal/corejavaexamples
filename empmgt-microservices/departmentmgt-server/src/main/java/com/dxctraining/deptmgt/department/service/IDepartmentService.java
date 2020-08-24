@@ -1,4 +1,4 @@
-package com.dxctraining.deptmgt.department.entities.service;
+package com.dxctraining.deptmgt.department.service;
 
 import com.dxctraining.deptmgt.department.entities.Department;
 

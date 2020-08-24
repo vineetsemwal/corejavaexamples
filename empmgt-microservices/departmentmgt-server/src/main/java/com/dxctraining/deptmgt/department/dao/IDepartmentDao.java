@@ -1,4 +1,4 @@
-package com.dxctraining.deptmgt.department.entities.dao;
+package com.dxctraining.deptmgt.department.dao;
 
 import com.dxctraining.deptmgt.department.entities.Department;
 
