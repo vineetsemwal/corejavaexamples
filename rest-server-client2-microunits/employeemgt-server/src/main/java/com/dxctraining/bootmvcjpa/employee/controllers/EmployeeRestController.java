@@ -9,12 +9,17 @@ import com.dxctraining.bootmvcjpa.employee.service.IEmployeeService;
 import com.dxctraining.bootmvcjpa.employee.util.EmployeeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("/employees")
 public class EmployeeRestController {
@@ -34,7 +39,7 @@ public class EmployeeRestController {
    */
     @PostMapping(value = "/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public EmployeeDto create(@RequestBody CreateEmployeeRequest requestData) {
+    public EmployeeDto create(@RequestBody @Valid CreateEmployeeRequest requestData) {
         String name = requestData.getName();
         String password = requestData.getPassword();
         int age = requestData.getAge();
@@ -93,7 +98,7 @@ public class EmployeeRestController {
      * uri is /employees/update
      */
     @PutMapping("/update")
-    public EmployeeDto updateEmployee(@RequestBody UpdateEmployeeRequest requestData) {
+    public EmployeeDto updateEmployee(@RequestBody @Valid UpdateEmployeeRequest requestData) {
         String name = requestData.getName();
         String password = requestData.getPassword();
         int age = requestData.getAge();
@@ -111,7 +116,7 @@ public class EmployeeRestController {
     }
 
     @GetMapping("/authenticate/{id}/{password}")
-    public boolean authenticate(@PathVariable("id") int id, @PathVariable("password") String password) {
+    public boolean authenticate(@PathVariable("id") int id, @NotBlank  @PathVariable("password") String password) {
         boolean result = employeeService.authenticate(id, password);
         return result;
     }

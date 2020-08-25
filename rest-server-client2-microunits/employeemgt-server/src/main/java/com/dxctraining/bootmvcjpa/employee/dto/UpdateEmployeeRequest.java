@@ -1,9 +1,15 @@
 package com.dxctraining.bootmvcjpa.employee.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 public class UpdateEmployeeRequest {
 
     private int id;
 
+    @Size(min = 2)
+    @NotBlank
     private String name;
 
     private double salary;

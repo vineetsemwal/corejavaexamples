@@ -25,4 +25,10 @@ public class DepartmentServiceImpl implements IDepartmentService {
         return department;
     }
 
+    @Override
+    public Department findByName(String name){
+      Department department=  dao.findByName(name);
+      return department;
+    }
+
 }

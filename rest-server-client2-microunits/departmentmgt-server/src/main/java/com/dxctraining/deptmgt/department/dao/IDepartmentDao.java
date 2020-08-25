@@ -8,5 +8,6 @@ public interface IDepartmentDao {
 
     Department save(Department department);
 
+    Department findByName(String name);
 
 }

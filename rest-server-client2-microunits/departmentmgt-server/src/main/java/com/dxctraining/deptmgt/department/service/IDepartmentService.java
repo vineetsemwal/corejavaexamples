@@ -8,4 +8,5 @@ public interface IDepartmentService {
 
     Department save(Department department);
 
+    Department findByName(String name);
 }

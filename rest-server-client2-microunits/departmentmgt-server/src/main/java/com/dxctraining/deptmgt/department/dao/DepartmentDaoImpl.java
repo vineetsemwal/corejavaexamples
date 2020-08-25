@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 @Repository
 public class DepartmentDaoImpl implements IDepartmentDao {
@@ -26,6 +28,16 @@ public class DepartmentDaoImpl implements IDepartmentDao {
     public Department save(Department department) {
         department=entityManager.merge(department);
         return department;
+    }
+
+    @Override
+    public Department findByName(String name){
+        System.out.println("inside findbyname name argument="+name);
+        String ql="from Department where name=:name";
+        TypedQuery<Department>query=entityManager.createQuery(ql,Department.class);
+        query.setParameter("name",name);
+        Department department=query.getSingleResult();
+       return department;
     }
 
 }
