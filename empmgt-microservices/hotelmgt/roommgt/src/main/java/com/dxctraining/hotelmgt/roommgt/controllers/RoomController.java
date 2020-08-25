@@ -7,8 +7,13 @@ import com.dxctraining.hotelmgt.roommgt.service.IRoomService;
 import com.dxctraining.hotelmgt.roommgt.util.RoomUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import javax.validation.*;
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@Validated
 @RestController
 @RequestMapping("/rooms")
 public class RoomController {
@@ -21,7 +26,7 @@ public class RoomController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public RoomDto add(@RequestBody CreateRoomRequest requestData){
+    public RoomDto add(@RequestBody @Valid CreateRoomRequest requestData){
         Room room=new Room(requestData.getFloorNo(),requestData.getRoomNo());
         room=roomService.save(room);
         RoomDto response=roomUtil.toDto(room);
@@ -29,7 +34,7 @@ public class RoomController {
     }
 
     @GetMapping("/get/{id}")
-    public RoomDto getRoom(@PathVariable("id") String id){
+    public RoomDto getRoom(@PathVariable("id") @NotBlank String id){
       Room room=  roomService.findById(id);
       RoomDto dto=roomUtil.toDto(room);
       return dto;

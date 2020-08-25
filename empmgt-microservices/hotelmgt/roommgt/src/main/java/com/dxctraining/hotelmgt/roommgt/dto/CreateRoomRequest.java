@@ -1,9 +1,14 @@
 package com.dxctraining.hotelmgt.roommgt.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 public class CreateRoomRequest {
 
+    @Min(0)
     private int floorNo;
 
+    @Min(0)
     private int roomNo;
 
     public int getFloorNo() {

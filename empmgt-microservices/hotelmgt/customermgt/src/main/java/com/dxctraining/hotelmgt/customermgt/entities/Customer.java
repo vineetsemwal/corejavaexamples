@@ -3,6 +3,7 @@ package com.dxctraining.hotelmgt.customermgt.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Entity
@@ -12,6 +13,7 @@ public class Customer {
     @Id
     private Integer id;
 
+    @NotBlank
     private String name;
 
     private String roomId;

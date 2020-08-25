@@ -10,9 +10,13 @@ import com.dxctraining.hotelmgt.customermgt.util.CustomerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
+
+@Validated
 @RequestMapping("/customers")
 @RestController
 public class CustomerController {
@@ -31,7 +35,7 @@ public class CustomerController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/add")
-    public CustomerDto create(@RequestBody CreateCustomer requestData) {
+    public CustomerDto create(@RequestBody @Valid CreateCustomer requestData) {
         Customer customer = new Customer(requestData.getName());
         customer = service.save(customer);
         CustomerDto dto = util.toDto(customer,null);
@@ -47,7 +51,7 @@ public class CustomerController {
     }
 
     @PutMapping("/book")
-    public CustomerDto bookRoom(@RequestBody CreateBookRequest requestData){
+    public CustomerDto bookRoom(@RequestBody @Valid CreateBookRequest requestData){
       Customer customer  =service.bookRoom(requestData.getCustomerId(),requestData.getRoomId());
       RoomDto roomDto=fetchRoomById(requestData.getRoomId());
       CustomerDto dto=  util.toDto(customer,roomDto);

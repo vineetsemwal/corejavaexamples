@@ -1,9 +1,12 @@
 package com.dxctraining.hotelmgt.customermgt.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class CreateBookRequest {
 
     private int customerId;
 
+    @NotBlank
     private String roomId;
 
     public int getCustomerId() {
