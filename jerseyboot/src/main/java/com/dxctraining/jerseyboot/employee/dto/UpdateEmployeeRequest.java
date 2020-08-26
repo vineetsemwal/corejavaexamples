@@ -7,8 +7,6 @@ public class UpdateEmployeeRequest {
 
     private int id;
 
-    @Size(min = 2)
-    @NotBlank
     private String name;
 
     private double salary;

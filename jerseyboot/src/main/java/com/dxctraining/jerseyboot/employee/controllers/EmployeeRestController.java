@@ -2,6 +2,7 @@ package com.dxctraining.jerseyboot.employee.controllers;
 
 import com.dxctraining.jerseyboot.employee.dto.CreateEmployeeRequest;
 import com.dxctraining.jerseyboot.employee.dto.EmployeeDto;
+import com.dxctraining.jerseyboot.employee.dto.UpdateEmployeeRequest;
 import com.dxctraining.jerseyboot.employee.entities.Employee;
 import com.dxctraining.jerseyboot.employee.service.IEmployeeService;
 import com.dxctraining.jerseyboot.employee.util.EmployeeUtil;
@@ -10,9 +11,7 @@ import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Path("/employees")
 @Component
@@ -49,6 +48,21 @@ public class EmployeeRestController {
         return dto;
     }
 
+
+    @Path("/update")
+    @PUT
+    @Consumes("application/json")
+    @Produces("application/json")
+    public EmployeeDto update(UpdateEmployeeRequest requestData) {
+        System.out.println("inside update");
+        Employee employee=service.findEmployeeById(requestData.getId());
+        employee.setName(requestData.getName());
+        employee.setPassword(requestData.getPassword());
+        employee.setAge(requestData.getAge());
+        employee=service.update(employee);
+        EmployeeDto dto = util.employeeDto(employee);
+        return dto;
+    }
 
     @Path("/get/{id}")
     @Produces("application/json")
