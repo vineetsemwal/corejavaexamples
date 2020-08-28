@@ -40,7 +40,7 @@ public class DepartmentServiceImplTest {
      * verifying: DepartmentNotFoundException is thrown
      */
     @Test
-    public void testFindById_2() {
+    public void testFindById_1() {
      /*
        Executable executable=new Executable() {
          @Override
@@ -60,7 +60,7 @@ public class DepartmentServiceImplTest {
      * verifying: findById() returns department which was added to the store
      */
     @Test
-    public void testFindById_1() {
+    public void testFindById_2() {
         System.out.println("entity manager=" + entityManager);
         Department department = new Department();
         department.setName("dev");

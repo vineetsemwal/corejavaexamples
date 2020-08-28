@@ -2,13 +2,15 @@ package com.dxctraining.calculator;
 
 public class Calculator {
 
-    public int add(int num1, int num2){
-        int result= num1+num2;
-        return result;
+    private Adder adder;
+
+    public Calculator(Adder adder){
+        this.adder=adder;
     }
 
     public int addByTen(int num1){
-        int result=add(num1,10);
+        System.out.println("inside add by ten , num="+num1);
+        int result=adder.add(num1,10);
         return result;
     }
 
