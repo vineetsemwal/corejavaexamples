@@ -14,4 +14,16 @@ public class Calculator {
         return result;
     }
 
+    public int multiply(int a, int b){
+        System.out.println("inside multiply");
+        return a*b;
+    }
+
+    public int multiplyByTwo(int num){
+        System.out.println("inside multiply by 2");
+       int result= multiply(num,2);
+       return result;
+    }
+
+
 }

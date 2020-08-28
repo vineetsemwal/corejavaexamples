@@ -41,5 +41,13 @@ class CalculatorTest {
         Mockito.verify(adder).add(5,10);
     }
 
+    @Test
+    public void testMultiplyByTwo_1(){
+       Calculator spy =Mockito.spy(calculator);
+       Mockito.doReturn(10).when(spy).multiply(5,2);
+       int result=spy.multiplyByTwo(5);
+       Assertions.assertEquals(10,result);
+    }
+
 
 }
