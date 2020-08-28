@@ -1,5 +1,6 @@
 package com.dxctraining.deptmgt.department.controllers;
 
+import com.dxctraining.deptmgt.department.dto.CreateDepartmentRequest;
 import com.dxctraining.deptmgt.department.entities.Department;
 import com.dxctraining.deptmgt.department.service.IDepartmentService;
 import com.dxctraining.deptmgt.exceptions.DepartmentNotFoundException;
@@ -10,9 +11,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.ContentResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -25,18 +29,17 @@ public class DepartmentControllerUnitTest {
     MockMvc mockMvc;
 
     @MockBean
-    private IDepartmentService service;// mocket object here
+    private IDepartmentService service;// mocked object here
 
 
     @Test
     public void testGetDepartment_1() throws Exception {
-        System.out.println("**********service=" + service + "***********");
         int id = 1;
         Department department = new Department();
         department.setName("dev");
         department.setId(id);
         Mockito.when(service.findById(id)).thenReturn(department);
-        String jsonResult = "{id:1, name:'dev'}";
+        String jsonResult = "{\"id\":1, \"name\":\"dev\"}";
 /*
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/departments/get/1");
         StatusResultMatchers status = MockMvcResultMatchers.status();
@@ -48,26 +51,31 @@ public class DepartmentControllerUnitTest {
  */
        mockMvc.perform(get("/departments/get/1"))
        .andExpect(status().is(200))
-       .andExpect(content().json(jsonResult))   ;
-
+       .andExpect(content().json(jsonResult));
 
     }
 
-    /*
     @Test
-    public void testGetDepartment_2() throws Exception {
-        System.out.println("**********service="+service+"***********");
-        Mockito.doThrow(new DepartmentNotFoundException("department not found")).
-                when(service).findById(1);
-        //given()
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/departments/get/1");
-        StatusResultMatchers status = MockMvcResultMatchers.status();
-        ContentResultMatchers resultMatchers=MockMvcResultMatchers.content();
-        mockMvc.perform(requestBuilder).
-                andExpect(status.is(404)).
-                andExpect(resultMatchers.json("department not found"));
+    public void testAddDepartment_1() throws Exception {
+        int id = 1;
+        String deptName="dev";
+        Department department = new Department();
+        department.setName(deptName);
+        department.setId(id);
+        Mockito.when(service.findById(id)).thenReturn(department);
+        String jsonResult = "{\"id\":1, \"name\":\"dev\"}";
+        Mockito.when(service.save(Mockito.any(Department.class))).thenReturn(department);
+        CreateDepartmentRequest requestData=new CreateDepartmentRequest();
+        requestData.setName(deptName);
+
+        mockMvc.perform(
+                post("/departments/add")
+                 .content("{\"name\" : \"dev\"}")
+                 .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(201))
+                .andExpect(content().json(jsonResult));
+
+
     }
-    */
-
-
+    
 }

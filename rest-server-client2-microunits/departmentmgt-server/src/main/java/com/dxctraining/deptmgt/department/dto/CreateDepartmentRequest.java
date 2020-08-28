@@ -7,7 +7,6 @@ import javax.validation.constraints.Size;
 public class CreateDepartmentRequest {
 
     @NotBlank
-    @Size(min = 2)
     private String name;
 
     public String getName() {

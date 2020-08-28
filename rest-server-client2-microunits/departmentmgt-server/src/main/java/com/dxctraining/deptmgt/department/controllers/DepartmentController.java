@@ -28,6 +28,7 @@ public class DepartmentController {
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public DepartmentDto add(@Valid @NotNull @RequestBody CreateDepartmentRequest requestData) {
+        System.out.println("**********inside add "+requestData.getName());
         Department department = new Department();
         department.setName(requestData.getName());
         department = service.save(department);
