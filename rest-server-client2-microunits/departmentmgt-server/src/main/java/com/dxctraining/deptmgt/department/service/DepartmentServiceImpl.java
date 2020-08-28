@@ -2,6 +2,7 @@ package com.dxctraining.deptmgt.department.service;
 
 import com.dxctraining.deptmgt.department.entities.Department;
 import com.dxctraining.deptmgt.department.dao.IDepartmentDao;
+import com.dxctraining.deptmgt.exceptions.InvalidArgumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,7 @@ public class DepartmentServiceImpl implements IDepartmentService {
 
     @Override
     public Department save(Department department) {
+        validateDepartment(department);
         department=dao.save(department);
         return department;
     }
@@ -29,6 +31,12 @@ public class DepartmentServiceImpl implements IDepartmentService {
     public Department findByName(String name){
       Department department=  dao.findByName(name);
       return department;
+    }
+
+    public void validateDepartment(Department department){
+        if(department==null){
+            throw new InvalidArgumentException("department can't be null");
+        }
     }
 
 }
