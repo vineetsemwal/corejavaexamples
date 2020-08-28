@@ -7,6 +7,10 @@ class CalculatorTest {
 
     Calculator calculator;
 
+    @BeforeAll
+    public static void initBeforeAll() {
+    	System.out.println("inside before all");
+    }
 
     @BeforeEach
     public void init() {
