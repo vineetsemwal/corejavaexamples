@@ -18,6 +18,7 @@ class CalculatorTest {
     @BeforeEach
     public void init() {
         System.out.println("inside init");
+        //creating mock object of type Adder
         adder = Mockito.mock(Adder.class);
         calculator = new Calculator(adder);
     }
@@ -47,9 +48,11 @@ class CalculatorTest {
     @Test
     public void testAddByTen_1() {
         System.out.println("inside testAddByTen_1");
+        // providing stubbing/mock_implementation of add method
         Mockito.when(adder.add(5, 10)).thenReturn(15);
         int result = calculator.addByTen(5);
         Assertions.assertEquals(15, result);
+        //verifying add method is called Once with arguments 5 and 10
         Mockito.verify(adder).add(5,10);
     }
 
