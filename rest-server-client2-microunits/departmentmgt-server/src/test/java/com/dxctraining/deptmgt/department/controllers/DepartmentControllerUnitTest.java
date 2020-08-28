@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.ContentResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import org.springframework.test.web.servlet.result.StatusResultMatchers;
+import static org.springframework.test.web.servlet.result.StatusResultMatchers.*;
 
 @WebMvcTest(DepartmentController.class)
 @AutoConfigureMockMvc
@@ -30,16 +30,27 @@ public class DepartmentControllerUnitTest {
 
     @Test
     public void testGetDepartment_1() throws Exception {
-        System.out.println("**********service="+service+"***********");
-        int id=1;
-        Department department=new Department();
+        System.out.println("**********service=" + service + "***********");
+        int id = 1;
+        Department department = new Department();
         department.setName("dev");
         department.setId(id);
         Mockito.when(service.findById(id)).thenReturn(department);
-        String jsonResult="{id:1, name:'dev'}";
-        mockMvc.perform(get("/departments/get/1")).
-                andExpect(status().is(200)).
-                andExpect(content().json(jsonResult));
+        String jsonResult = "{id:1, name:'dev'}";
+/*
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/departments/get/1");
+        StatusResultMatchers status = MockMvcResultMatchers.status();
+        ContentResultMatchers resultMatchers = MockMvcResultMatchers.content();
+        mockMvc.perform(requestBuilder).
+                andExpect(status.is(200)).
+                andExpect(resultMatchers.json(jsonResult));
+
+ */
+       mockMvc.perform(get("/departments/get/1"))
+       .andExpect(status().is(200))
+       .andExpect(content().json(jsonResult))   ;
+
+
     }
 
     /*
