@@ -2,9 +2,11 @@ package com.dxctraining.deptmgt.department.controllers;
 
 import com.dxctraining.deptmgt.department.dto.DepartmentDto;
 import com.dxctraining.deptmgt.department.entities.Department;
+import com.dxctraining.deptmgt.exceptions.DepartmentNotFoundException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -51,6 +53,15 @@ public class DepartmentControllerTest {
         Assertions.assertEquals(result.getId(), storedDepartment.getId());
     }
 
-
-
+    /**
+     * case/scenario: department doesn't exist in store
+     * verifying: DepartmentNotFoundException is thrown
+     */
+    @Test
+    public void testGetDepartment_ById_2(){
+        Executable execute=()->controller.getDepartment(23);
+        Assertions.assertThrows(DepartmentNotFoundException.class,execute);
     }
+
+
+}
