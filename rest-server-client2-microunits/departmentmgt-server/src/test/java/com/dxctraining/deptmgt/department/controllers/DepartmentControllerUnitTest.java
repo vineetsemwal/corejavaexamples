@@ -1,8 +1,10 @@
 package com.dxctraining.deptmgt.department.controllers;
 
 import com.dxctraining.deptmgt.department.dto.CreateDepartmentRequest;
+import com.dxctraining.deptmgt.department.dto.DepartmentDto;
 import com.dxctraining.deptmgt.department.entities.Department;
 import com.dxctraining.deptmgt.department.service.IDepartmentService;
+import com.dxctraining.deptmgt.department.util.DepartmentUtil;
 import com.dxctraining.deptmgt.exceptions.DepartmentNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -31,6 +33,8 @@ public class DepartmentControllerUnitTest {
     @MockBean
     private IDepartmentService service;// mocked object here
 
+    @MockBean
+    private DepartmentUtil departmentUtil;
 
     @Test
     public void testGetDepartment_1() throws Exception {
@@ -39,7 +43,8 @@ public class DepartmentControllerUnitTest {
         department.setName("dev");
         department.setId(id);
         Mockito.when(service.findById(id)).thenReturn(department);
-        String jsonResult = "{\"id\":1, \"name\":\"dev\"}";
+        String jsonResult = "{\"id\" : 1 , \"name\" : \"dev\" }";
+                //{"id":1 , "name" : "dev"}
 /*
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/departments/get/1");
         StatusResultMatchers status = MockMvcResultMatchers.status();
@@ -59,18 +64,24 @@ public class DepartmentControllerUnitTest {
     public void testAddDepartment_1() throws Exception {
         int id = 1;
         String deptName="dev";
-        Department department = new Department();
-        department.setName(deptName);
-        department.setId(id);
-        Mockito.when(service.findById(id)).thenReturn(department);
-        String jsonResult = "{\"id\":1, \"name\":\"dev\"}";
-        Mockito.when(service.save(Mockito.any(Department.class))).thenReturn(department);
-        CreateDepartmentRequest requestData=new CreateDepartmentRequest();
-        requestData.setName(deptName);
+        Department departmentBeforeSave = new Department();
+        departmentBeforeSave.setName(deptName);
+        Department departmentAfterSave=new Department();
+        departmentAfterSave.setName(deptName);
+        departmentAfterSave.setId(id);
 
+        String jsonResult = "{\"id\" : 1 , \"name\" : \"dev\" }";
+        Mockito.when(departmentUtil.newDepartment()).thenReturn(departmentBeforeSave);
+        Mockito.when(service.save(departmentBeforeSave)).thenReturn(departmentAfterSave);
+        DepartmentDto dto=new DepartmentDto();
+        dto.setId(id);
+        dto.setName(deptName);
+        Mockito.when(departmentUtil.toDto(departmentAfterSave)).thenReturn(dto);
+
+        String requestBody="{\"name\" : \"dev\"}";
         mockMvc.perform(
                 post("/departments/add")
-                 .content("{\"name\" : \"dev\"}")
+                 .content(requestBody)
                  .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(201))
                 .andExpect(content().json(jsonResult));

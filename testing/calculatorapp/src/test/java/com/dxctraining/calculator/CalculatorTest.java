@@ -48,6 +48,7 @@ class CalculatorTest {
        Mockito.doReturn(10).when(spy).multiply(5,2);
        int result=spy.multiplyByTwo(5);
        Assertions.assertEquals(10,result);
+       Mockito.verify(spy).multiply(5,2);
     }
 
 

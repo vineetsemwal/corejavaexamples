@@ -4,6 +4,7 @@ import com.dxctraining.deptmgt.department.dto.CreateDepartmentRequest;
 import com.dxctraining.deptmgt.department.dto.DepartmentDto;
 import com.dxctraining.deptmgt.department.entities.Department;
 import com.dxctraining.deptmgt.department.service.IDepartmentService;
+import com.dxctraining.deptmgt.department.util.DepartmentUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -25,36 +26,33 @@ public class DepartmentController {
     @Autowired
     private IDepartmentService service;
 
-    @PostMapping("/add")
+    @Autowired
+    private DepartmentUtil departmentUtil;
+
+    @PostMapping(value = "/add")
     @ResponseStatus(HttpStatus.CREATED)
     public DepartmentDto add(@Valid @NotNull @RequestBody CreateDepartmentRequest requestData) {
         System.out.println("**********inside add "+requestData.getName());
-        Department department = new Department();
+        Department department = departmentUtil.newDepartment();
         department.setName(requestData.getName());
         department = service.save(department);
-        DepartmentDto response = toDto(department);
+        DepartmentDto response = departmentUtil.toDto(department);
         return response;
     }
 
     @GetMapping("/byname/{name}")
     public DepartmentDto findByDepartmentName(@NotBlank @Size(min = 2, max=7) @PathVariable("name") String name){
       Department department=  service.findByName(name);
-      DepartmentDto dto =toDto(department);
+      DepartmentDto dto =departmentUtil.toDto(department);
       return dto;
     }
 
     @GetMapping("/get/{id}")
     public DepartmentDto getDepartment( @PathVariable("id") int id) {
         Department department = service.findById(id);
-        DepartmentDto response = toDto(department);
+        DepartmentDto response = departmentUtil.toDto(department);
         return response;
     }
 
-    public DepartmentDto toDto(Department department) {
-        DepartmentDto dto = new DepartmentDto();
-        dto.setId(department.getId());
-        dto.setName(department.getName());
-        return dto;
-    }
 
 }
