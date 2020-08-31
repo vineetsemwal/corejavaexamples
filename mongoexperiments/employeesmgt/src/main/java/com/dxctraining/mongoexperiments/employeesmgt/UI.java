@@ -16,16 +16,22 @@ public class UI {
 
     @PostConstruct
     public void start() {
-        Employee employee1 = new Employee("ankit", 21);
+        Employee employee1 = new Employee("ankit", "kahar", 21);
         employee1 = createEmployee(employee1);
         String id1 = employee1.getId();
-        Employee employee2 = new Employee("kashish", 22);
+        Employee employee2 = new Employee("kashish", "singh", 22);
         employee2 = createEmployee(employee2);
+
+        Employee employee3 = new Employee("roop", "sai", 22);
+        employee3 = createEmployee(employee3);
+
         String id2 = employee2.getId();
         displayEmployeeById(id1);
         displayEmployeeById(id2);
         displayByAge(21);
         displayAll();
+
+        displayByFullName("kashish", "singh");
 
     }
 
@@ -47,7 +53,7 @@ public class UI {
 
     void displayEmployee(Employee employee) {
         System.out.println(employee.getId() +
-                " name=" + employee.getName() + " age=" + employee.getAge());
+                " name=" + employee.getFirstName() +" "+employee.getLastName()+ " age=" + employee.getAge());
 
     }
 
@@ -63,6 +69,14 @@ public class UI {
         employee = service.save(employee);
         displayEmployee(employee);
         return employee;
+    }
+
+    public void displayByFullName(String firstName, String lastName){
+       System.out.println("**********inside displayByFullName");
+       List<Employee>list= service.findByFullName(firstName, lastName);
+       for (Employee employee:list){
+           displayEmployee(employee);
+       }
     }
 
 }

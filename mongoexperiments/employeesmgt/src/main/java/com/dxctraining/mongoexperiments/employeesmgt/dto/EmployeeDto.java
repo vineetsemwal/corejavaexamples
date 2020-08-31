@@ -3,7 +3,7 @@ package com.dxctraining.mongoexperiments.employeesmgt.dto;
 public class EmployeeDto {
     private String id;
 
-    private String name;
+    private String firstName, lastName;
 
     private int age;
 
@@ -11,9 +11,10 @@ public class EmployeeDto {
 
     }
 
-    public EmployeeDto(String id, String name, int age){
+    public EmployeeDto(String id, String firstName, String lastName, int age){
         this.id=id;
-        this.name=name;
+        this.firstName=firstName;
+        this.lastName=lastName;
         this.age=age;
     }
 
@@ -25,19 +26,27 @@ public class EmployeeDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getAge() {
         return age;
     }
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

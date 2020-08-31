@@ -26,7 +26,7 @@ public class EmployeeRestController {
     @PostMapping(value = "/add")
     @ResponseStatus(HttpStatus.CREATED)
     public EmployeeDto create(@RequestBody CreateEmployeeRequest requestData) {
-        Employee employee=new Employee(requestData.getName(),requestData.getAge());
+        Employee employee=new Employee(requestData.getFirstName(), requestData.getLastName(),requestData.getAge());
         employee=service.save(employee);
         EmployeeDto response=util.employeeDto(employee);
         return response;

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class EmployeeUtil {
 
     public EmployeeDto employeeDto(Employee employee){
-        EmployeeDto dto=new EmployeeDto(employee.getId(),employee.getName(),employee.getAge());
+        EmployeeDto dto=new EmployeeDto(employee.getId(),employee.getFirstName(), employee.getLastName(),employee.getAge());
         return dto;
     }
 

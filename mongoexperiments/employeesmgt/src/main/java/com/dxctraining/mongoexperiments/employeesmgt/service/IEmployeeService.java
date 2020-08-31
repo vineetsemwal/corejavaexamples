@@ -16,4 +16,10 @@ public interface IEmployeeService {
 
     List<Employee>findByAge(int age);
 
+    List<Employee>findByFirstName(String firstName);
+
+    List<Employee>findByLastName(String lastName);
+
+    List<Employee>findByFullName(String firstName, String lastName);
+
 }

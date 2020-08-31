@@ -11,7 +11,7 @@ public class Employee {
     @Id
     private String id;
 
-    private String name;
+    private String firstName, lastName;
 
     private int age;
 
@@ -19,8 +19,9 @@ public class Employee {
 
     }
 
-    public Employee(String name, int age){
-        this.name=name;
+    public Employee(String firstName, String lastName, int age){
+        this.firstName=firstName;
+        this.lastName=lastName;
         this.age=age;
     }
 
@@ -32,12 +33,20 @@ public class Employee {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getAge() {

@@ -2,17 +2,9 @@ package com.dxctraining.mongoexperiments.employeesmgt.dto;
 
 public class CreateEmployeeRequest {
 
-    private String name;
+    private String firstName, lastName;
 
     private int age;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getAge() {
         return age;
@@ -20,5 +12,21 @@ public class CreateEmployeeRequest {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

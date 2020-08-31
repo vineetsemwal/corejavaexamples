@@ -33,6 +33,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return employee;
     }
 
+
     @Override
     public List<Employee> findAll() {
         List<Employee> list = dao.findAll();
@@ -45,6 +46,24 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return list;
     }
 
+    @Override
+    public List<Employee>findByFirstName(String firstName){
+        List<Employee>list=dao.findByFirstName(firstName);
+        return list;
+    }
+
+
+    @Override
+    public List<Employee>findByLastName(String lastName){
+        List<Employee>list=dao.findByLastName(lastName);
+        return list;
+    }
+
+    @Override
+    public List<Employee>findByFullName(String firstName, String lastName){
+        List<Employee>list=dao.findByFullName(firstName, lastName);
+        return list;
+    }
 
     @Override
     public void removeById(String id) {
