@@ -30,8 +30,13 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public void removeById(String id) {
-        Employee employee = findById(id);
+        Employee employee=findById(id);
         mongo.remove(employee);
+        /*
+        Criteria criteria=Criteria.where("id").is(id);
+        Query query=Query.query(criteria);
+        mongo.findAndRemove(query,Employee.class);
+       */
     }
 
     @Override

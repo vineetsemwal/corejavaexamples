@@ -2,6 +2,7 @@ package com.dxctraining.mongoexperiments.employeesmgt.controllers;
 
 import com.dxctraining.mongoexperiments.employeesmgt.dto.CreateEmployeeRequest;
 import com.dxctraining.mongoexperiments.employeesmgt.dto.EmployeeDto;
+import com.dxctraining.mongoexperiments.employeesmgt.entities.Address;
 import com.dxctraining.mongoexperiments.employeesmgt.entities.Employee;
 import com.dxctraining.mongoexperiments.employeesmgt.service.IEmployeeService;
 import com.dxctraining.mongoexperiments.employeesmgt.util.EmployeeUtil;
@@ -26,7 +27,8 @@ public class EmployeeRestController {
     @PostMapping(value = "/add")
     @ResponseStatus(HttpStatus.CREATED)
     public EmployeeDto create(@RequestBody CreateEmployeeRequest requestData) {
-        Employee employee=new Employee(requestData.getFirstName(), requestData.getLastName(),requestData.getAge());
+        Address address=new Address(requestData.getCity(),requestData.getHouseNo());
+        Employee employee=new Employee(requestData.getFirstName(), requestData.getLastName(),requestData.getAge(),address);
         employee=service.save(employee);
         EmployeeDto response=util.employeeDto(employee);
         return response;

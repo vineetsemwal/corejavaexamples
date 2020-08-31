@@ -15,14 +15,17 @@ public class Employee {
 
     private int age;
 
+    private Address address;
+
     public Employee(){
 
     }
 
-    public Employee(String firstName, String lastName, int age){
+    public Employee(String firstName, String lastName, int age, Address address){
         this.firstName=firstName;
         this.lastName=lastName;
         this.age=age;
+        this.address=address;
     }
 
     public String getId() {
@@ -55,6 +58,15 @@ public class Employee {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
