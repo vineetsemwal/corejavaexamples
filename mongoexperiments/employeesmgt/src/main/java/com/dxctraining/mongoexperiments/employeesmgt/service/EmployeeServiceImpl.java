@@ -6,10 +6,11 @@ import com.dxctraining.mongoexperiments.employeesmgt.exceptions.EmployeeNotFound
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeServiceImpl implements IEmployeeService{
+public class EmployeeServiceImpl implements IEmployeeService {
 
     @Autowired
     private IEmployeeDao dao;
@@ -17,23 +18,36 @@ public class EmployeeServiceImpl implements IEmployeeService{
 
     @Override
     public Employee save(Employee employee) {
-       employee= dao.save(employee);
-       return employee;
+        employee = dao.save(employee);
+        return employee;
     }
 
     @Override
     public Employee findById(String id) {
-      Optional<Employee>optional= dao.findById(id);
-      boolean exist=optional.isPresent();
-      if(!exist){
-          throw new EmployeeNotFoundException("employee not found for id="+id);
-      }
-      Employee employee=optional.get();
-       return employee;
+        Optional<Employee> optional = dao.findById(id);
+        boolean exist = optional.isPresent();
+        if (!exist) {
+            throw new EmployeeNotFoundException("employee not found for id=" + id);
+        }
+        Employee employee = optional.get();
+        return employee;
     }
 
     @Override
+    public List<Employee> findAll() {
+        List<Employee> list = dao.findAll();
+        return list;
+    }
+
+    @Override
+    public List<Employee> findByAge(int age) {
+        List<Employee> list = dao.findByAge(age);
+        return list;
+    }
+
+
+    @Override
     public void removeById(String id) {
-       dao.deleteById(id);
+        dao.deleteById(id);
     }
 }
