@@ -1,72 +1,80 @@
 package com.dxctraining.mongoexperiments.employeesmgt.service;
 
-import com.dxctraining.mongoexperiments.employeesmgt.dao.IEmployeeDao;
 import com.dxctraining.mongoexperiments.employeesmgt.entities.Employee;
-import com.dxctraining.mongoexperiments.employeesmgt.exceptions.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
 
     @Autowired
-    private IEmployeeDao dao;
-
+    private MongoTemplate mongo;
 
     @Override
     public Employee save(Employee employee) {
-        employee = dao.save(employee);
+        System.out.println("using mongotemplate save");
+        employee = mongo.save(employee);
         return employee;
     }
 
     @Override
     public Employee findById(String id) {
-        Optional<Employee> optional = dao.findById(id);
-        boolean exist = optional.isPresent();
-        if (!exist) {
-            throw new EmployeeNotFoundException("employee not found for id=" + id);
-        }
-        Employee employee = optional.get();
+        Employee employee = mongo.findById(id, Employee.class);
         return employee;
     }
 
+    @Override
+    public void removeById(String id) {
+        Employee employee = findById(id);
+        mongo.remove(employee);
+    }
 
     @Override
     public List<Employee> findAll() {
-        List<Employee> list = dao.findAll();
+        List<Employee> list = mongo.findAll(Employee.class);
         return list;
     }
 
     @Override
     public List<Employee> findByAge(int age) {
-        List<Employee> list = dao.findByAge(age);
+        Criteria criteria=Criteria.where("age").is(age);
+        Query query = Query.query(criteria);
+        List<Employee> list = mongo.find(query, Employee.class);
         return list;
     }
 
     @Override
-    public List<Employee>findByFirstName(String firstName){
-        List<Employee>list=dao.findByFirstName(firstName);
-        return list;
-    }
-
-
-    @Override
-    public List<Employee>findByLastName(String lastName){
-        List<Employee>list=dao.findByLastName(lastName);
+    public List<Employee> findByFirstName(String firstName) {
+        Criteria criteria=Criteria.where("firstName").is(firstName) ;
+        Query query = Query.query(criteria);
+        List<Employee> list = mongo.find(query, Employee.class);
         return list;
     }
 
     @Override
-    public List<Employee>findByFullName(String firstName, String lastName){
-        List<Employee>list=dao.findByFullName(firstName, lastName);
+    public List<Employee> findByLastName(String lastName) {
+        Criteria criteria=Criteria.where("lastName").is(lastName) ;
+        Query query = Query.query(criteria);
+        List<Employee> list = mongo.find(query, Employee.class);
         return list;
     }
 
     @Override
-    public void removeById(String id) {
-        dao.deleteById(id);
+    public List<Employee> findByFullName(String firstName, String lastName) {
+        /*
+        Criteria criteria1=Criteria.where("firstName").is(firstName);
+        Criteria criteria2=Criteria.where("lastName").is(lastName);
+        Criteria criteria=criteria1.andOperator(criteria2) ;
+        */
+        Criteria criteria=Criteria.where("firstName").is(firstName).
+                andOperator(Criteria.where("lastName").is(lastName));
+        Query query = Query.query(criteria);
+        List<Employee> list = mongo.find(query, Employee.class);
+        return list;
     }
 }
