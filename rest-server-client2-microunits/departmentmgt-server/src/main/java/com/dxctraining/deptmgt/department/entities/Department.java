@@ -41,6 +41,6 @@ public class Department {
 
     @Override
     public int hashCode() {
-        return id.intValue();
+        return id;
     }
 }
