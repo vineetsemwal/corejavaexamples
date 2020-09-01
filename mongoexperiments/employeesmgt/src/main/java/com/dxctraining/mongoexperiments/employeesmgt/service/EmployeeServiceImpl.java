@@ -18,7 +18,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     @Override
     public Employee save(Employee employee) {
         System.out.println("using mongotemplate save");
-        employee = mongo.save(employee);
+        employee = mongo.save(employee);//works like jpa merge
         return employee;
     }
 

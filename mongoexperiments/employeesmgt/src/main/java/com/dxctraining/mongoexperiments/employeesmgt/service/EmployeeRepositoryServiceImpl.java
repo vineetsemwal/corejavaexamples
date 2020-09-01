@@ -4,6 +4,7 @@ import com.dxctraining.mongoexperiments.employeesmgt.dao.IEmployeeDao;
 import com.dxctraining.mongoexperiments.employeesmgt.entities.Employee;
 import com.dxctraining.mongoexperiments.employeesmgt.exceptions.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,10 +16,9 @@ public class EmployeeRepositoryServiceImpl implements IEmployeeService {
     @Autowired
     private IEmployeeDao dao;
 
-
     @Override
     public Employee save(Employee employee) {
-        employee = dao.save(employee);
+        employee = dao.save(employee);// like jpa merge
         return employee;
     }
 
