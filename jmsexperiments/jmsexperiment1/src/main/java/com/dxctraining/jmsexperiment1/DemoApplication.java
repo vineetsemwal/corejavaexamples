@@ -28,6 +28,7 @@ public class DemoApplication {
                                                        DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory containerFactory = new DefaultJmsListenerContainerFactory();
         configurer.configure(containerFactory, connectionFactory);
+      //  containerFactory.setPubSubDomain(true);
         return containerFactory;
     }
 
