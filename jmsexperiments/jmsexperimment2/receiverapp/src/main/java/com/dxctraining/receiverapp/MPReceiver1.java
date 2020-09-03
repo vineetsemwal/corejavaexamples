@@ -5,11 +5,11 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TelanganaReceiver1 {
+public class MPReceiver1 {
 
-    @JmsListener(destination = "telangana", containerFactory = "listenerFactory")
+    @JmsListener(destination = "mp", containerFactory = "listenerFactory")
     public void receiveTelaganaMessage(DxcMessage received) {
-        System.out.println("***********inside telanagna receiver 1 Welcome in telangana="+received.getReceiver()
+        System.out.println("***********inside madhya pradesh receiver 1 Welcome in mp="+received.getReceiver()
                + "message is"+ received.getMessage()    );
     }
 }

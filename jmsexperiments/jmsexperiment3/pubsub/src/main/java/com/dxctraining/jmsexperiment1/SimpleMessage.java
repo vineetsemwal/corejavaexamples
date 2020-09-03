@@ -1,8 +1,6 @@
-package com.dxctraining.receiverapp;
+package com.dxctraining.jmsexperiment1;
 
-import java.io.Serializable;
-
-public class SimpleMessage implements Serializable {
+public class SimpleMessage {
 
     private String receiverName;
 

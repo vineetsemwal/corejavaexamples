@@ -12,6 +12,8 @@ import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
 import javax.jms.ConnectionFactory;
+import java.util.HashMap;
+import java.util.Map;
 
 @EnableJms
 @SpringBootApplication

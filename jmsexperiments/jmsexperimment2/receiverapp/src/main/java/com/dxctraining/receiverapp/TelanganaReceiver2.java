@@ -1,15 +1,18 @@
 package com.dxctraining.receiverapp;
 
+
 import com.dxctraining.shared.DxcMessage;
+import org.apache.activemq.command.ActiveMQMessage;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
+
 @Component
-public class TelanganaReceiver1 {
+public class TelanganaReceiver2 {
 
     @JmsListener(destination = "telangana", containerFactory = "listenerFactory")
     public void receiveTelaganaMessage(DxcMessage received) {
-        System.out.println("***********inside telanagna receiver 1 Welcome in telangana="+received.getReceiver()
-               + "message is"+ received.getMessage()    );
+        System.out.println("***********inside telanagna receiver 2 Welcome in telangana="+received.getReceiver()
+                + "message is"+ received.getMessage()    );
     }
 }
