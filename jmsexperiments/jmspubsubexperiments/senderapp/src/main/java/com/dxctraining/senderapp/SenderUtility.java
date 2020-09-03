@@ -23,11 +23,11 @@ public class SenderUtility {
         DxcMessage anujMsg = new DxcMessage("anuj", "madhya pradesh", "hello anuj");
         DxcMessage vineelMsg = new DxcMessage("vineel", "telangana", "hello vineel");
 
-         template.convertAndSend("mp", ankitMsg);
+         template.convertAndSend("india.mp", ankitMsg);
          System.out.println("************sent message to ankit");
-        template.convertAndSend("mp", anujMsg);
+        template.convertAndSend("india.mp", anujMsg);
          System.out.println("************sent message to anuj");
-        template.convertAndSend("telangana", vineelMsg);
+        template.convertAndSend("india.telangana", vineelMsg);
         System.out.println("************sent message to vineel");
     }
 
