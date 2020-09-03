@@ -6,13 +6,16 @@ public class InterestMessage {
 
     private Integer videoId;
 
+    private String operation;
+
     public InterestMessage(){
 
     }
 
-    public InterestMessage(int videoId, String interest){
+    public InterestMessage(int videoId, String interest ,String operation){
         this.videoId=videoId;
         this.interest=interest;
+        this.operation=operation;
     }
 
     public String getInterest() {
@@ -30,4 +33,14 @@ public class InterestMessage {
     public void setVideoId(Integer videoId) {
         this.videoId = videoId;
     }
+
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
 }

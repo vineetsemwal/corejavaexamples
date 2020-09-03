@@ -15,4 +15,8 @@ public interface IUserService {
     AppUser addVideo(int userId, int videoId);
 
     void addVideo(String interest, Integer videoId);
+
+    void removeVideo(String interest, Integer videoId);
+
+    AppUser removeVideo(int userId, int videoId);
 }

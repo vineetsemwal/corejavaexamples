@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 @Component
-public class InterestSubsriber {
+public class InterestSubscriber {
 
     @Autowired
     private IUserService service;
@@ -21,8 +21,13 @@ public class InterestSubsriber {
     public void receiveMessage(InterestMessage received) {
         String interest=received.getInterest();
         int videoId=received.getVideoId();
-     System.out.println("interest message received="+interest+" video id="+videoId);
-      service.addVideo(interest,videoId);
+      System.out.println("interest message received="+interest+" video id="+videoId);
+      if(received.getOperation().equals("add"))
+      {
+          service.addVideo(interest,videoId);
+      }else {
+          service.removeVideo(interest,videoId);
+      }
 
     }
 }

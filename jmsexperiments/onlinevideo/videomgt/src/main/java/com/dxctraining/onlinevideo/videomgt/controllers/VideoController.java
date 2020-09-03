@@ -7,10 +7,7 @@ import com.dxctraining.onlinevideo.videomgt.entities.Video;
 import com.dxctraining.onlinevideo.videomgt.service.IVideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/videos")
 @RestController
@@ -27,7 +24,18 @@ public class VideoController {
         Video video=new Video(request.getInterest(),request.getDescription());
         video=videoService.save(video);
 
-        InterestMessage msg=new InterestMessage(video.getId(),video.getInterest());
+        InterestMessage msg=new InterestMessage(video.getId(),video.getInterest(),"add");
+        template.convertAndSend("topic.video",msg);
+        VideoDto response=new VideoDto(video.getId(),video.getInterest(), video.getDescription());
+        return response;
+    }
+
+
+    @DeleteMapping("/remove/{id}")
+    public VideoDto remove(@PathVariable("id") Integer id){
+        Video video=videoService.findById(id);
+        videoService.deleteById(id);
+        InterestMessage msg=new InterestMessage(id,video.getInterest(),"remove");
         template.convertAndSend("topic.video",msg);
         VideoDto response=new VideoDto(video.getId(),video.getInterest(), video.getDescription());
         return response;

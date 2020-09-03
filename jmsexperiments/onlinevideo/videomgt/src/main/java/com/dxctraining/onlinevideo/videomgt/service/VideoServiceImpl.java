@@ -30,4 +30,9 @@ public class VideoServiceImpl implements IVideoService{
         }
         return optional.get();
     }
+
+    @Override
+    public void deleteById(Integer id){
+        dao.deleteById(id);
+    }
 }

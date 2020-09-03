@@ -8,4 +8,5 @@ public interface IVideoService {
 
     Video findById(Integer id);
 
+    void deleteById(Integer id);
 }

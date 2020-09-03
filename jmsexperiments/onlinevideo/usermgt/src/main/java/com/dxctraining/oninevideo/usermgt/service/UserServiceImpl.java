@@ -48,6 +48,27 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
+    public void removeVideo(String interest, Integer videoId) {
+        List<AppUser> users= userDao.findByInterest(interest);
+        System.out.println("users found="+users.size());
+        for (AppUser user:users){
+            removeVideo(user.getId(),videoId);
+        }
+    }
+
+    @Override
+    public AppUser removeVideo(int userId, int videoId){
+        AppUser user= findById(userId);
+        Set<Integer> videos=  user.getVideos();
+        if(videos==null){
+            return user;
+        }
+        videos.remove(videoId);
+        user=userDao.save(user);
+        return user;
+    }
+
+    @Override
     public AppUser addVideo(int userId, int videoId){
        AppUser user= findById(userId);
         Set<Integer> videos=  user.getVideos();
