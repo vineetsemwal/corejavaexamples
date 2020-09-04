@@ -4,7 +4,9 @@ import com.dxctraining.oninevideo.usermgt.dto.CreateUserRequest;
 import com.dxctraining.oninevideo.usermgt.entities.AppUser;
 import com.dxctraining.oninevideo.usermgt.entities.UserDto;
 import com.dxctraining.oninevideo.usermgt.service.IUserService;
+import com.dxctraining.onlinevideo.shared.DeactivateUserMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/users")
@@ -13,6 +15,9 @@ public class UserController {
 
     @Autowired
     private IUserService service;
+
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
     @PostMapping("/add")
     public UserDto add(@RequestBody CreateUserRequest request){
@@ -29,6 +34,12 @@ public class UserController {
         return dto;
     }
 
-
+    @DeleteMapping("/remove/{id}")
+    public void removeUser(@PathVariable("id")Integer id){
+        service.deleteById(id);
+        DeactivateUserMessage msg=new DeactivateUserMessage(id);
+        jmsTemplate.convertAndSend("user.deactivated",msg);
+    }
+    
 
 }

@@ -1,31 +1,24 @@
 package com.dxctraining.oninevideo.usermgt.entities;
 
-import javax.persistence.*;
-import java.util.Objects;
 import java.util.Set;
 
-@Entity
-public class AppUser {
-
-    @GeneratedValue
-    @Id
+public class UserDto {
     private Integer id;
 
     private String name, interest;
 
-    /**
-     * this field holds videos suggested to the user
-     */
-    @ElementCollection
+
     private Set<Integer> videos;
 
-    public AppUser(){
+    public UserDto(){
 
     }
 
-    public AppUser(String name, String interest){
+    public UserDto(Integer id,String name, String interest, Set<Integer> videos){
+        this.id=id;
         this.name=name;
         this.interest=interest;
+        this.videos = videos;
     }
 
     public Integer getId() {
@@ -60,16 +53,4 @@ public class AppUser {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AppUser appUser = (AppUser) o;
-        return Objects.equals(id, appUser.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
