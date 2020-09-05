@@ -6,6 +6,7 @@ import javax.validation.constraints.Size;
 
 public class CreateEmployeeRequest {
 
+    @NotBlank
     private String firstName,lastName;
 
     public String getFirstName() {
