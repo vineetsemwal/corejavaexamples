@@ -1,10 +1,18 @@
+/*
+rest/ spread operator
+*/
+function fun(...args){
 
-function fun()
-{
- {
-    let i=10;
- }
- console.log("i="+i);
+ for(let i=0;i<args.length;i++){
+     let e=args[i];
+     console.log("element="+e);
+ }   
 }
 
-fun();
+fun(100);
+
+fun("hello", "dharma", "teja");
+
+fun("pradeep", "s");
+
+fun("amal", "pradeep");
