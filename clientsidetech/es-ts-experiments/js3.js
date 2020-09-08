@@ -1,7 +1,6 @@
 class User{
     name;
-    age;
-    
+    age;    
     constructor(name, age){
      this.name=name;
      this.age=age;
@@ -13,8 +12,26 @@ class User{
 
 }
 
- let user1=new User("bhanu",21);
- let user2=new User("dharma",21);
+class BusinessUser extends User{
+
+    amount;
+    
+    constructor(name, age, amount){
+        super(name, age);
+        this.amount=amount;
+    }
+
+    display(){
+        super.display();
+        console.log("amount="+this.amount);
+    }
+
+}
+
+
+
+ let user1=new BusinessUser("bhanu",21,1000);
+ let user2=new BusinessUser("dharma",21,2000);
 
   let users=[user1,user2];
 
