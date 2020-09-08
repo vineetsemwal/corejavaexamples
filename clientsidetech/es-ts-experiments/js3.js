@@ -13,9 +13,8 @@ class User{
 }
 
 class BusinessUser extends User{
-
     amount;
-    
+   
     constructor(name, age, amount){
         super(name, age);
         this.amount=amount;
