@@ -1,4 +1,4 @@
-let num1 : number=10;
+let num1 : number=10;// let varaiable: type=value
 let str: string="hello";
 let flag:boolean=true;
 
