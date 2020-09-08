@@ -6,28 +6,36 @@
 
 <script type="text/javascript">
 
-
+console.log("function declared");
 function toggleDisplay(){
-//
+console.log("inside toogledisplay");
+     //
 // defining the function to be executed on click event
 //
 //in javascript functions can be passed as argument 
 //
- $("#toggler1").click(function(){
-     console.log("inside toggle");
+
+ var fun=function(){
+     console.log("inside anonymous function");
      //
      // other methods that can be experiemented are hide(),show()
      //
     $("#msgContainer").toggle(); 
 
- });   
+ };
+
+  console.log("hooking function on click event");
+
+ $("#toggler1").click(fun);   
 
 };
 
+console.log("hooking toggle display function on dom ready event");
 //
 // execute our function when dom is ready ,ie. run after document is finished loading
 //
 $(document).ready(toggleDisplay);
+
 </script>
 
  </head>

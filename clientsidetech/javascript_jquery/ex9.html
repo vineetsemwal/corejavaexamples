@@ -13,7 +13,8 @@ function toggleDisplay(){
 //
 //in javascript functions can be passed as argument 
 //
- $("#toggler1").click(function(){
+
+var fun=function(){
      console.log("inside toggle");
      //
      // other methods that can be experiemented are hide(),show()
@@ -28,8 +29,9 @@ function toggleDisplay(){
           $("#msgContainer").fadeIn(5000);
      }
     
+ };
 
- });   
+ $("#toggler1").click(fun);   
 
 };
 
