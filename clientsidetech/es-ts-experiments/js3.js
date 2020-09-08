@@ -7,6 +7,10 @@ class User{
      this.age=age;
     }
 
+    display(){
+        console.log("user="+this.name+" "+this.age);
+    }
+
 }
 
  let user1=new User("bhanu",21);
@@ -16,6 +20,6 @@ class User{
 
    for(let i =0;i <users.length;i++){
        let user=users[i];
-       console.log("user="+user.name+" "+user.age);
+       user.display();
    }
 
