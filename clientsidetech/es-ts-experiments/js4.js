@@ -5,7 +5,7 @@ let fun=function(){
 */
 
 let fun1=()=>"hello";
-let fun2=(arg)=>"hello "+ arg;
+let fun2=arg=>"hello "+ arg;
 
 let add1=(arg1, arg2)=>arg1+arg2;
 

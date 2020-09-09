@@ -6,7 +6,7 @@ class Student{
      this.age=age;
     }
 
-    display(){
+    display():void{
         console.log("student="+this.name+" "+this.age);
     }
 
@@ -33,6 +33,8 @@ class ITStudent extends Student{
 
   let students=[student1,student2];
 
+  // let variable of array
+  //variable will hold the currently iterated element
    for(let student of students){
        student.display();
    }
