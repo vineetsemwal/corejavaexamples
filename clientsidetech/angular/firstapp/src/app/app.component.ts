@@ -8,5 +8,25 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'firstapp';
   description="My first angular application";
-  startDate="20-09-2020";
+  startDate="09-09-2020";
+  name="firstapp";
+
+  topUser:User=new User("dharma" ,21);
+
+  users:User[]=[new User("dharma",21),
+          new User("saiteja",21)
+        ];
+
+
+
+}
+class User{
+  name:string;
+  age:number;
+
+  constructor(name : string, age:number){
+    this.name=name;
+    this.age=age;
+  }
+
 }
