@@ -1,6 +1,23 @@
 <h1>
-my application title is {{title}}
+my application title is {{title}} using interpolation
 </h1>
+
+
+<h1 [textContent]="title"></h1>
+
+
+<a [href]="links[0]">html</a>
+<br>
+
+<a [href]="links[1]">css</a>
+<br>
+
+<a [href]="links[2]">javascript</a>
+
+<br>
+<img [src]="imgPath" >
+
+
 
 <h3>
 and description is  {{description}}
@@ -26,6 +43,11 @@ Total Count of users {{users.length}}
 1) {{users[0].name}} {{users[0].age}}
 <br>
 2) {{users[1].name}} {{users[1].age}}
+
+
+
+
+
 
 
 
