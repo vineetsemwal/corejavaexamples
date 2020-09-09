@@ -25,7 +25,11 @@ export class AppComponent {
           new User("saiteja",21)
         ];
 
+    counter: number=0;    
 
+    increment(){
+      this.counter++;
+    }
 
 
 }
