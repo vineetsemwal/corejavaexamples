@@ -6,3 +6,5 @@
 bin
 **/target
 *.log
+
+node_modules
