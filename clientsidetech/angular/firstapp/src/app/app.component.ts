@@ -31,6 +31,8 @@ export class AppComponent {
       this.counter++;
     }
 
+    username:string="";
+
 
 }
 class User{

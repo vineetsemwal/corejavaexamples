@@ -20,12 +20,24 @@ my application title is {{title}} using interpolation
 <br>
 <button  (click)="increment()" >Increment </button>
 
+<br>
+<label>Count keys</label>
+<input (keyup)="increment()" type="text">
+
 counter value is {{ counter}}
 
+<br>
+<b>Two way binding example</b>
+<br>
+<label>Enter Name</label>
+<input  [(ngModel)]="username" name="usernameinput" >
 
-<h3>
-and description is  {{description}}
-</h3>
+<br>
+your name is {{username}}
+
+<br>
+ description is  {{description}}
+
 
 
 <br>
