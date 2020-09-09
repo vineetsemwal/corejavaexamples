@@ -29,4 +29,14 @@ class User{
     this.age=age;
   }
 
+  getName():string{
+    return this.name;
+  }
+
+  getAge():number{
+    return this.age;
+  }
+
+
+
 }
