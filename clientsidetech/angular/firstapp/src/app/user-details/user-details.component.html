@@ -1,2 +1,13 @@
 Name is {{user.name}}
 Age is {{user.age}}
+
+
+<div *ngIf="user.age>=21">
+  You are eligible to vote
+</div>
+
+<div *ngIf="user.age<21">
+    You are NOT eligible to vote
+</div>
+  
+
