@@ -11,47 +11,4 @@ export class AppComponent {
   startDate="09-09-2020";
   name="firstapp";
 
-  links=["https://www.w3schools.com/html",
-         "https://www.w3schools.com/css",
-         "https://www.w3schools.com/js" 
-         ]
-
-
-  imgPath=[ "https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/255px-Flag_of_India.svg.png"];
-
-  topUser:User=new User("dharma" ,21);
-
-  users:User[]=[new User("dharma",21),
-          new User("saiteja",21)
-        ];
-
-    counter: number=0;    
-
-    increment(){
-      this.counter++;
-    }
-
-    username:string="";
-
-
-}
-class User{
-  name:string;
-  age:number;
-  
-  constructor(name : string, age:number){
-    this.name=name;
-    this.age=age;
-  }
-
-  getName():string{
-    return this.name;
-  }
-
-  getAge():number{
-    return this.age;
-  }
-
-
-
 }
