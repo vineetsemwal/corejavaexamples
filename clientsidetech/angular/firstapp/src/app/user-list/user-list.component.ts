@@ -25,4 +25,8 @@ export class UserListComponent implements OnInit {
 
   color:string="white";
 
+  isEligible(age:number):boolean{
+    return age>=21;
+  }
+
 }

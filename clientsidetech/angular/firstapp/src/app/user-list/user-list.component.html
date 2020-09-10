@@ -1,16 +1,11 @@
 
-<div *ngFor="let user of users;let i=index">
+<div *ngFor="let user of users;let i=index" 
+ [ngClass]="{'eligible':isEligible(user.age) ,
+  'notEligible' : !isEligible(user.age) }">
 
-  <div *ngIf="user.age>=21" [ngStyle]="{'background-color':eligibleColor, 'color' :color }"> 
  {{i+1}} )  {{user.name}} {{user.age}}
 
- </div>
-
- <div *ngIf="user.age<21" [ngStyle]="{'background-color':notEligibleColor, 'color' :color }"> 
-    {{i+1}} )  {{user.name}} {{user.age}}
-   
-    </div>
-
+    
 </div>
 
 <div>

@@ -17,5 +17,6 @@ export class UserDetailsComponent implements OnInit {
   user:User=new User("dharma",21);
 
   cssLink="http://w3schools.com/css";
+
   
 }
