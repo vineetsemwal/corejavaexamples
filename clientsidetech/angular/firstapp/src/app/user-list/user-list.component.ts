@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
+import { preserveWhitespacesDefault } from '@angular/compiler';
 
 @Component({
   selector: 'user-list',
@@ -15,8 +16,13 @@ export class UserListComponent implements OnInit {
 
   users:User[]=[
     new User("dharma",21),
-    new User("anuj",21),
+    new User("anuj",19),
     new User("prakash",21)
   ];
+
+  eligibleColor:string="green";
+  notEligibleColor:string="red";
+
+  color:string="white";
 
 }

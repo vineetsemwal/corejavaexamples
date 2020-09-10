@@ -1,6 +1,29 @@
 
-<div *ngFor="let user of users; let i=index">
+<div *ngFor="let user of users;let i=index">
 
- {{i+1}} )   {{user.name}} {{user.age}}
+  <div *ngIf="user.age>=21" [ngStyle]="{'background-color':eligibleColor, 'color' :color }"> 
+ {{i+1}} )  {{user.name}} {{user.age}}
+
+ </div>
+
+ <div *ngIf="user.age<21" [ngStyle]="{'background-color':notEligibleColor, 'color' :color }"> 
+    {{i+1}} )  {{user.name}} {{user.age}}
+   
+    </div>
 
 </div>
+
+<div>
+
+    1)  dharma 21
+   
+   </div>
+
+   
+<div>
+
+    2)  anuj 21
+   
+   </div>
+
+   
