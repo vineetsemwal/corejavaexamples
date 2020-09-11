@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { SubstringPipe } from './pipes/substring';
+import { SmallestPipe } from './pipes/smallest';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserDetailsComponent,
     UserListComponent,
-    SubstringPipe
+    SubstringPipe,
+    SmallestPipe
   ],
   imports: [
     BrowserModule,

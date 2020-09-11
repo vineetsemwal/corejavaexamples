@@ -20,4 +20,6 @@ export class UserDetailsComponent implements OnInit {
 
   date=new Date();
   
+  numbers=[2,5,1,9,10];
+
 }

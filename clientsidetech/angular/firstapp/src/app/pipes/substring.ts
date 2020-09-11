@@ -1,14 +1,9 @@
 import { PipeTransform, Pipe } from '@angular/core';
 
-@Pipe(
-    {
-     "name" : "substring"   
-    }
-)
+@Pipe({ "name" : "substring" })
 export class SubstringPipe implements PipeTransform{
    
-    transform(original: string, ...args ):string {
-   
+    transform(original: string, ...args:number[] ):string {   
        let start:number=args[0];
        let end:number=args[1];
    console.log("inside substring transform, original="+original+" start="+start+" end="+end);     
