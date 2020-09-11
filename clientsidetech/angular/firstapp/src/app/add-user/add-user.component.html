@@ -1,8 +1,17 @@
 <h3>Add user</h3>
+<!--
+  ngSubmit is the event and we are hooking our addUser method to
+   this event so that on submit addUser method will get executed
+   
+   myform is a template variable, it contains formgroup 
+   and we are passing this to our method so as to process it at code(ts) side  
+-->
 <form #myform=ngForm (ngSubmit)="addUser(myform)">
 
 <div>
     <label>User name</label>
+    <!--ngModel creates formcontrol at code side,
+         without mentioning ngModel, angular has no knoledge of this textfield -->
     <input type="text" name="username" ngModel>    
 </div>
 
