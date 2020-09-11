@@ -7,6 +7,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { SubstringPipe } from './pipes/substring';
 import { SmallestPipe } from './pipes/smallest';
+import { AddUserComponent } from './add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SmallestPipe } from './pipes/smallest';
     UserDetailsComponent,
     UserListComponent,
     SubstringPipe,
-    SmallestPipe
+    SmallestPipe,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,

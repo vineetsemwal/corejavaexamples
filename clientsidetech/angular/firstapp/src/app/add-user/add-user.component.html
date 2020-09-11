@@ -1,0 +1,28 @@
+<h3>Add user</h3>
+<form #myform=ngForm (ngSubmit)="addUser(myform)">
+
+<div>
+    <label>User name</label>
+    <input type="text" name="username" ngModel>    
+</div>
+
+
+<div>
+    <label>Age</label>
+    <input type="number" name="age" ngModel>    
+</div>
+
+
+<div>
+    <label>Salary</label>
+    <input type="number" name="salary" ngModel>    
+</div>
+
+<input type="submit" value="Submit">    
+</form>
+<br>
+
+<div *ngIf="user!=undefined">
+Submitted data is {{user.name}} {{user.age}} {{user.salary}}
+</div>
+
