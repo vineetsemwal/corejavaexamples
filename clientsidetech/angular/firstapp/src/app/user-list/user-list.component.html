@@ -2,23 +2,11 @@
 <div *ngFor="let user of users;let i=index" 
  [ngClass]="{'eligible':isEligible(user.age) ,
   'notEligible' : !isEligible(user.age) }">
+ 
+ {{user.name }} 
 
- {{i+1}} )  {{user.name}} {{user.age}}
+  {{user.age}}
 
+  {{user.salary| currency:'INR'}}
     
 </div>
-
-<div>
-
-    1)  dharma 21
-   
-   </div>
-
-   
-<div>
-
-    2)  anuj 21
-   
-   </div>
-
-   

@@ -1,6 +1,6 @@
-Name is {{user.name}}
+Name is {{user.name | uppercase}}
 Age is {{user.age}}
-
+Salary is {{user.salary | currency:'INR' }}
 
 <div *ngIf="user.age>=21">
   You are eligible to vote
@@ -10,4 +10,14 @@ Age is {{user.age}}
     You are NOT eligible to vote
 </div>
   
+ <br>
+ formatting in japanese currency
+ {{500 | currency:'JPY' }} 
+ <br>
+ formatting in indian currency
+ {{500 | currency:'INR' }} 
+
+ <br>
+ formatting into json
+ {{user | json }}
 

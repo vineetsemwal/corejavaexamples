@@ -15,9 +15,9 @@ export class UserListComponent implements OnInit {
   }
 
   users:User[]=[
-    new User("dharma",21),
-    new User("anuj",19),
-    new User("prakash",21)
+    new User("dharma",21,10000),
+    new User("anuj",19,20000),
+    new User("prakash",21,30000)
   ];
 
   eligibleColor:string="green";

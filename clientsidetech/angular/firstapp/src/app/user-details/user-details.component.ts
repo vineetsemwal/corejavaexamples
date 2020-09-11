@@ -14,9 +14,10 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  user:User=new User("dharma",21);
+  user:User=new User("dharma",21, 10000);
 
   cssLink="http://w3schools.com/css";
 
+  date=new Date();
   
 }
