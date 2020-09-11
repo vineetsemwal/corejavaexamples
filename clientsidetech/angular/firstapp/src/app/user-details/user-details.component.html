@@ -1,4 +1,4 @@
-Name is {{user.name | uppercase}}
+Name is {{user.name | uppercase | substring:0:3 }}
 Age is {{user.age}}
 Salary is {{user.salary | currency:'INR' }}
 
@@ -24,4 +24,8 @@ Salary is {{user.salary | currency:'INR' }}
  <br>
  substring pipe
 
+ end argument not provided
+ {{'new delhi' | substring:5}}
+ <br>
+end argument provided
  {{'new delhi' | substring:5:7 }}

@@ -7,8 +7,10 @@ import { PipeTransform, Pipe } from '@angular/core';
 )
 export class SubstringPipe implements PipeTransform{
    
-    transform(original: string,start:number , end:number ):string {
+    transform(original: string, ...args ):string {
    
+       let start:number=args[0];
+       let end:number=args[1];
    console.log("inside substring transform, original="+original+" start="+start+" end="+end);     
 
    if(end==undefined){
