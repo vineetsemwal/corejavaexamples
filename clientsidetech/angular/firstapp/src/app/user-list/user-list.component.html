@@ -1,12 +1,25 @@
 
-<div *ngFor="let user of users;let i=index" 
+<table border="1">
+
+<tr>
+ <th>Name</th>
+ <th>Age</th>
+ <th>Salary</th> 
+</tr>  
+<tr *ngFor="let user of users;let i=index" 
  [ngClass]="{'eligible':isEligible(user.age) ,
   'notEligible' : !isEligible(user.age) }">
- 
+
+  <td>
  {{user.name }} 
+</td>
 
+<td>
   {{user.age}}
+</td>
 
+<td>
   {{user.salary| currency:'INR'}}
-    
-</div>
+    </td>
+</tr>
+</table>

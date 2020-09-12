@@ -7,13 +7,11 @@ import { preserveWhitespacesDefault } from '@angular/compiler';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent  {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+ 
   users:User[]=[
     new User("dharma",21,10000),
     new User("anuj",19,20000),

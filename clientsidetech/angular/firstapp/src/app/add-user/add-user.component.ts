@@ -18,7 +18,6 @@ export class AddUserComponent {
    let name=data.username;
    let age=data.age;
    this.user=new User(name,age,salary);
-   console.log("user initialized="+this.user.age);
   }
 
 }
