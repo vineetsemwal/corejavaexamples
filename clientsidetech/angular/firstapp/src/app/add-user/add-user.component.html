@@ -32,7 +32,10 @@
 </form>
 <br>
 
-<div *ngIf="user!=undefined">
-Submitted data is {{user.name}} {{user.age}} {{user.salary}}
+<div *ngIf="user!==undefined">
+ <h3>Added user </h3>   
+ {{user.id}}
+{{user.name}}
+{{user.age}}
+{{user.salary}}
 </div>
-

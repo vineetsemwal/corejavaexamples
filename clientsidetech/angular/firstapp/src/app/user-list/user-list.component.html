@@ -1,14 +1,19 @@
-
+<h3>Users List</h3>
 <table border="1">
 
 <tr>
- <th>Name</th>
+  <th>Id</th>
+  <th>Name</th>
  <th>Age</th>
  <th>Salary</th> 
 </tr>  
 <tr *ngFor="let user of users;let i=index" 
  [ngClass]="{'eligible':isEligible(user.age) ,
   'notEligible' : !isEligible(user.age) }">
+
+  <td>
+    {{user.id}}
+  </td>
 
   <td>
  {{user.name }} 

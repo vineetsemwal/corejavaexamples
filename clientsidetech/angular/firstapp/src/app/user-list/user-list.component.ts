@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
 import { preserveWhitespacesDefault } from '@angular/compiler';
+import { UserService } from '../service/userservice';
 
 @Component({
   selector: 'user-list',
@@ -9,14 +10,14 @@ import { preserveWhitespacesDefault } from '@angular/compiler';
 })
 export class UserListComponent  {
 
-  constructor() { }
+  userService:UserService;
 
- 
-  users:User[]=[
-    new User("dharma",21,10000),
-    new User("anuj",19,20000),
-    new User("prakash",21,30000)
-  ];
+  users:User[];
+
+  constructor(userService:UserService) {
+    this.userService=userService;
+    this.users=userService.allUsers();
+   }
 
   eligibleColor:string="green";
   notEligibleColor:string="red";

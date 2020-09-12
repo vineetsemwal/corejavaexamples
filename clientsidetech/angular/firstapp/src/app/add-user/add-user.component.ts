@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
+import { UserService } from '../service/userservice';
 
 @Component({
   selector: 'add-user',
@@ -8,16 +9,21 @@ import { User } from '../model/user';
 })
 export class AddUserComponent {
 
-  constructor() { }
+  userService:UserService;
 
-  user:User=undefined;
+  constructor(userService:UserService) {
+     this.userService=userService;
+   }
+
+   user:User;
 
   addUser(form:any){
    let data=form.value;
   let salary=data.salary;
    let name=data.username;
    let age=data.age;
-   this.user=new User(name,age,salary);
+   this.user=new User(-1,name,age,salary);
+  this.userService.addUser(this.user);
   }
 
 }

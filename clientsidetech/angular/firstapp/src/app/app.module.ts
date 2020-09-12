@@ -8,6 +8,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { SubstringPipe } from './pipes/substring';
 import { SmallestPipe } from './pipes/smallest';
 import { AddUserComponent } from './add-user/add-user.component';
+import { UserService } from './service/userservice';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { AddUserComponent } from './add-user/add-user.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
