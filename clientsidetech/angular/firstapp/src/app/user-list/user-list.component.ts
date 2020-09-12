@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
-import { preserveWhitespacesDefault } from '@angular/compiler';
 import { UserService } from '../service/userservice';
 
 @Component({
