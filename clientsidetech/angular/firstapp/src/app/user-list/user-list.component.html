@@ -21,10 +21,17 @@
 
 <td>
   {{user.age}}
+
 </td>
 
 <td>
   {{user.salary| currency:'INR'}}
     </td>
-</tr>
+
+  <td>
+    <button (click)="removeUser(user.id)">Remove User</button>
+  
+  </td>  
+
+  </tr>
 </table>

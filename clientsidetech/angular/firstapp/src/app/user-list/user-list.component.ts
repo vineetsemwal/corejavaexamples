@@ -28,4 +28,8 @@ export class UserListComponent  {
     return age>=21;
   }
 
+  removeUser(id:number){
+ this.userService.removeUser(id);
+  }
+
 }

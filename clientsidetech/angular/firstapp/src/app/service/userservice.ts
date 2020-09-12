@@ -13,7 +13,7 @@ export class UserService{
         return this.generatedId;
     }
 
-    addUser(user:User){
+    addUser(user:User):void{
         let newId=this.generateId();
         user.id=newId;
         this.users.push(user);
@@ -30,6 +30,17 @@ export class UserService{
          }
       } 
       return null;
+    }
+
+    removeUser(id:number):void{
+        for(let i=0 ;i<this.users.length;i++ ){
+           let user=this.users[i];
+            if(user.id===id){
+                //index and number of elements to remove
+                this.users.splice(i,1);
+            }
+         }
+           
     }
 
 }
