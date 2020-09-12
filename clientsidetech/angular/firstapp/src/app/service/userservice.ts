@@ -33,6 +33,7 @@ export class UserService{
     }
 
     removeUser(id:number):void{
+        console.log("before user removed,length="+this.users.length); 
         for(let i=0 ;i<this.users.length;i++ ){
            let user=this.users[i];
             if(user.id===id){
