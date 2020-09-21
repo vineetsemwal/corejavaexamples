@@ -8,20 +8,21 @@
 -->
 <form #myform=ngForm (ngSubmit)="myform.valid &&  addUser(myform)">
 
+    
+<div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.required" class="error">
+    User name is required
+   </div>
 <div>
     <label>User name</label>
     <!--
         ngModel creates formcontrol at code side,
          without mentioning ngModel, angular has no knowledge of this textfield -->
-    <input type="text" name="username" ngModel #usernameCtrl=ngModel required minlength="2">    
-</div>
-
-<div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.required">
- User name is required
+    <input type="text" name="username" required minlength="2" ngModel #usernameCtrl=ngModel >    
 </div>
 
 
-<div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.minlength">
+
+<div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.minlength" class="error">
     minlength is 2
    </div>
 
@@ -31,7 +32,7 @@
 </div>
 
 
-<div *ngIf="ageCtrl.errors!=null && ageCtrl.errors.required">
+<div *ngIf="ageCtrl.errors!=null && ageCtrl.errors.required" class="error">
     Age is required
 </div>
 
@@ -41,7 +42,7 @@
 </div>
 
 
-<div *ngIf="salaryCtrl.errors!=null && salaryCtrl.errors.required">
+<div *ngIf="salaryCtrl.errors!=null && salaryCtrl.errors.required" class="error">
    Salary is required
 </div>
 
