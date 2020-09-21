@@ -9,11 +9,8 @@ import { UserService } from '../service/userservice';
 })
 export class AddUserComponent {
 
-  userService:UserService;
-
-  constructor(userService:UserService) {
-     this.userService=userService;
-   }
+  constructor(private userService:UserService) {
+     }
 
    user:User;
 

@@ -9,12 +9,10 @@ import { UserService } from '../service/userservice';
 })
 export class UserListComponent  {
 
-  userService:UserService;
 
   users:User[];
 
-  constructor(userService:UserService) {
-    this.userService=userService;
+  constructor(private userService:UserService) {
     this.users=userService.allUsers();
    }
 

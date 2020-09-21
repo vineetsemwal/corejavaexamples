@@ -1,6 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 
+//let numbers=[2,3,4,1,5]
+// {{numbers | smallest}}
 @Pipe({name: 'smallest'})
 export class SmallestPipe implements PipeTransform{
     

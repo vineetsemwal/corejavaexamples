@@ -1,6 +1,6 @@
 import { PipeTransform, Pipe } from '@angular/core';
 
-//'hyderabad' | substring:2:5
+//'hyderabad' | substring:2
 
 @Pipe({ "name" : "substring" })
 export class SubstringPipe implements PipeTransform{

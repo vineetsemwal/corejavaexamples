@@ -10,10 +10,7 @@ import { UserService } from '../service/userservice';
 })
 export class UserDetailsComponent  {
 
-  userService:UserService;
-
-  constructor(userService:UserService) {
-    this.userService=userService;
+  constructor(private userService:UserService) {
    }
 
    user:User;
