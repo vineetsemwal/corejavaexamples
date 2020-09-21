@@ -1,0 +1,26 @@
+<h3>User details</h3>
+<form #idform=ngForm (ngSubmit)=findUser(idform) >
+
+  <label>User Id</label>
+  <input type="number" name="userid"   ngModel>
+
+  <input type="submit" value="Search">
+</form>
+<br>
+
+<div *ngIf="user!==undefined">
+  
+  
+  Name is {{user.name | uppercase }}
+Age is {{user.age}}
+Salary is {{user.salary | currency:'INR' }}
+
+<div *ngIf="user.age>=21">
+  You are eligible to vote
+</div>
+
+<div *ngIf="user.age<21">
+    You are NOT eligible to vote
+</div>
+  
+</div>

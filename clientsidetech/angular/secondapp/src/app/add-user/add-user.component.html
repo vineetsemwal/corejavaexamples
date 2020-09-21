@@ -1,0 +1,60 @@
+<h3>Add user</h3>
+<!--
+  ngSubmit is the event and we are hooking our addUser method to
+   this event so that on submit addUser method will get executed
+   
+   myform is a template variable, it contains formgroup 
+   and we are passing this to our method so as to process it at code(ts) side  
+-->
+<form #myform=ngForm (ngSubmit)="myform.valid &&  addUser(myform)">
+
+<div>
+    <label>User name</label>
+    <!--
+        ngModel creates formcontrol at code side,
+         without mentioning ngModel, angular has no knowledge of this textfield -->
+    <input type="text" name="username" required minlength="2" ngModel #usernameCtrl=ngModel >    
+</div>
+
+<div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.required" class="error">
+ User name is required
+</div>
+
+
+<div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.minlength" class="error">
+    minlength is 2
+   </div>
+
+<div>
+    <label>Age</label>
+    <input type="number" name="age" ngModel #ageCtrl=ngModel required >    
+</div>
+
+
+<div *ngIf="ageCtrl.errors!=null && ageCtrl.errors.required" class="error">
+    Age is required
+</div>
+
+<div>
+    <label>Salary</label>
+    <input type="number" name="salary" ngModel #salaryCtrl=ngModel required>    
+</div>
+
+
+<div *ngIf="salaryCtrl.errors!=null && salaryCtrl.errors.required" class="error">
+   Salary is required
+</div>
+
+
+
+<input type="submit" value="Submit">    
+</form>
+<br>
+
+<div *ngIf="user!==undefined">
+ <h3>Added user </h3>   
+ {{user.id}}
+{{user.name}}
+{{user.age}}
+{{user.salary}}
+</div>

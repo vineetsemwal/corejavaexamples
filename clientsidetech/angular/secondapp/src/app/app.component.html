@@ -1,0 +1,28 @@
+<label>provide title of app </label>
+<input type="text" [(ngModel)]=title name="titleField" >
+<h1>
+Welcome to {{title}}
+</h1>
+<br>
+Inside Parent , before user details component rendered 
+
+<h1>User management</h1>
+
+<br>
+
+
+<a href="" routerLink="add-user">Add User</a>
+<br>
+
+<a href="" routerLink="adduser-codedriven">Add User Code dtiven</a>
+<br>
+
+<a href="" routerLink="user-details">User Details</a>
+<br>
+<a href="" routerLink="user-list">User List </a>
+
+<router-outlet></router-outlet>
+<br>
+Inside Parent , after user details component rendered 
+
+
