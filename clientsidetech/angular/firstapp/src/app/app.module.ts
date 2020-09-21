@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
@@ -9,6 +9,7 @@ import { SubstringPipe } from './pipes/substring';
 import { SmallestPipe } from './pipes/smallest';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UserService } from './service/userservice';
+import { AdduserCodedrivenComponent } from './adduser-codedriven/adduser-codedriven.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +18,14 @@ import { UserService } from './service/userservice';
     UserListComponent,
     SubstringPipe,
     SmallestPipe,
-    AddUserComponent
+    AddUserComponent,
+    AdduserCodedrivenComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
