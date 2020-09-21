@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '../model/user';
 import { UserService } from '../service/userservice';
 
@@ -22,9 +22,9 @@ export class AdduserCodedrivenComponent implements OnInit {
   user:User;
 
   constructor(private userService:UserService,fb:FormBuilder) { 
-    this.usernameCtrl=fb.control('');
-    this.ageCtrl=fb.control('');
-    this.salaryCtrl=fb.control('');
+    this.usernameCtrl=fb.control('',[Validators.minLength(2), Validators.required]);
+    this.ageCtrl=fb.control('',[Validators.required]);
+    this.salaryCtrl=fb.control('',[Validators.required]);
     this.userForm=fb.group({
     username:  this.usernameCtrl,
     age: this.ageCtrl,

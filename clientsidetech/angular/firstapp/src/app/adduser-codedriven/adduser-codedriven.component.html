@@ -6,7 +6,7 @@
    myform is a template variable, it contains formgroup 
    and we are passing this to our method so as to process it at code(ts) side  
 -->
-<form [formGroup]="userForm" (ngSubmit)="addUser()">
+<form [formGroup]="userForm" (ngSubmit)="userForm.valid && addUser()">
 
 <div>
     <label>User name</label>
@@ -17,16 +17,36 @@
 </div>
 
 
+<div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.required" class="error">
+    User name is required
+   </div>
+
+   
+<div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.minlength" class="error">
+   Minimum length is 2
+   </div>
+
 <div>
     <label>Age</label>
     <input type="number"  formControlName="age">    
 </div>
 
 
+
+<div *ngIf="ageCtrl.errors!=null && ageCtrl.errors.required" class="error">
+    User name is required
+   </div>
+
 <div>
     <label>Salary</label>
     <input type="number"  formControlName="salary">    
 </div>
+
+
+
+<div *ngIf="salaryCtrl.errors!=null && salaryCtrl.errors.required" class="error">
+   salary is required
+   </div>
 
 <input type="submit" value="Submit">    
 </form>

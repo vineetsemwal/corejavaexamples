@@ -8,10 +8,6 @@
 -->
 <form #myform=ngForm (ngSubmit)="myform.valid &&  addUser(myform)">
 
-    
-<div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.required" class="error">
-    User name is required
-   </div>
 <div>
     <label>User name</label>
     <!--
@@ -20,6 +16,9 @@
     <input type="text" name="username" required minlength="2" ngModel #usernameCtrl=ngModel >    
 </div>
 
+<div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.required" class="error">
+ User name is required
+</div>
 
 
 <div *ngIf="usernameCtrl.errors!=null && usernameCtrl.errors.minlength" class="error">
