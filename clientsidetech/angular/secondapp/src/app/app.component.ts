@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,10 +12,10 @@ export class AppComponent {
   startDate="09-09-2020";
   name="firstapp";
 
-  constructor(private router:Router){
-   
-    //programtic way of navigating to a path, when ever appcomponent will be constructed, navigation will be done to user-list
-   // router.navigate(['user-list']);
+  constructor(private router:Router){  
+  //programtic way of navigating to a path, when ever appcomponent will be constructed, navigation will be done to user-list
+    //this.router.navigate(['user-list']);
+  
   }
 
 }

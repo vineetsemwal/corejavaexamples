@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import {User} from '../model/user'
 import { UserService } from '../service/userservice';
@@ -11,14 +12,21 @@ import { UserService } from '../service/userservice';
 })
 export class UserDetailsComponent  {
 
-  constructor(private userService:UserService) {
+  constructor(private route:ActivatedRoute, private userService:UserService) {
+
+   let observable =route.paramMap;//param map is the property in activated route
+   observable.subscribe((params:ParamMap)=>{
+    let idVal:string =params.get("id");
+    let idNum:number=Number(idVal);//converting string to number
+    console.log("id available is "+idNum);
+    this.findUserById(idNum);
+   })
    }
 
    user:User;
 
-  findUser(form:any){
-    let data=form.value;
-    let id=data.userid;
+
+   findUserById(id:number){
     let observable:Observable<User>=this.userService.getUser(id);
     observable.subscribe(
       userArg=>{
@@ -30,6 +38,12 @@ export class UserDetailsComponent  {
       }
 
     );
+   }
+
+  findUser(form:any){
+    let data=form.value;
+    let id=data.userid;
+   this.findUserById(id);
   }
 
 }
