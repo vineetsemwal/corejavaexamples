@@ -25,6 +25,14 @@ const routes: Routes = [
     path:'user-list',
     component: UserListComponent
   }
+  ,
+  
+  //wheneever someone has list in uri, it will be naviagted to user-list
+  {
+    path:'list',
+    redirectTo :'user-list',
+    pathMatch:'full'
+  }
 ];
 
 @NgModule({
