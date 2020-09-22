@@ -14,7 +14,7 @@ export class AppComponent {
 
   constructor(private router:Router){
    
-    //programtic way of navigating to a path
+    //programtic way of navigating to a path, when ever appcomponent will be constructed, navigation will be done to user-list
    // router.navigate(['user-list']);
   }
 
