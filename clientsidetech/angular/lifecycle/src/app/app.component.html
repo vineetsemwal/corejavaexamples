@@ -1,5 +1,8 @@
-<a href="" routerLink="child1">Child 1</a>
+<input [(ngModel)]="inputText">
 <br>
-<a href="" routerLink="child2">Child 2</a>
+parent has {{inputText}}
+
+<br>
+<child-cmp [receivedInput]="inputText"></child-cmp>
 
 <router-outlet></router-outlet>

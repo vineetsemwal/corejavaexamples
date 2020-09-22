@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'child-cmp',
@@ -7,16 +7,25 @@ import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular
 })
 export class ChildComponent implements OnInit, OnChanges, OnDestroy {
 
+
+  @Input() receivedInput:string;
+
+
   constructor() {
     console.log("inside child constructor");
    }
   
   
+
    /**
     * executes every time data bound input property changes
     */
    ngOnChanges(changes: SimpleChanges): void {
-   console.log("inside child ngOnchanges");
+   console.log("inside child ngOnchanges, receivedInput="+this.receivedInput);
+   let change=changes['receivedInput'];
+   let previous=change.previousValue;
+   let newVal=change.currentValue;
+   console.log("previous val="+previous+" new value="+newVal);
   }
 
   /**
