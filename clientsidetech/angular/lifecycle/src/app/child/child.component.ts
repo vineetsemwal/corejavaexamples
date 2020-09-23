@@ -15,7 +15,20 @@ export class ChildComponent implements OnInit, OnChanges, OnDestroy {
     console.log("inside child constructor");
    }
   
-  
+  /**
+   *  let obj= {
+   *     name:"dharma",
+   *     age : 21
+   *   }
+   * 
+   *   let name=obj.name;
+   *   let age= obj.age;
+   * 
+   *  let name=obj['name'];
+   *  let age=obj['age'];
+   * 
+   *    
+   */
 
    /**
     * executes every time data bound input property changes
