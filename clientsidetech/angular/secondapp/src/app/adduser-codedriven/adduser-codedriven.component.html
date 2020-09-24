@@ -8,12 +8,12 @@
 -->
 <form [formGroup]="userForm" (ngSubmit)="userForm.valid && addUser()">
 
-<div>
+<div class="form-group">
     <label>User name</label>
     <!--
         ngModel creates formcontrol at code side,
          without mentioning ngModel, angular has no knowledge of this textfield -->
-    <input type="text" formControlName="username" >    
+    <input type="text" formControlName="username" class="form-control">    
 </div>
 
 
@@ -26,9 +26,9 @@
    Minimum length is 2
    </div>
 
-<div>
+<div class="form-group">
     <label>Age</label>
-    <input type="number"  formControlName="age">    
+    <input type="number"  formControlName="age"  class="form-control">    
 </div>
 
 
@@ -37,9 +37,9 @@
     User name is required
    </div>
 
-<div>
+<div class="form-group">
     <label>Salary</label>
-    <input type="number"  formControlName="salary">    
+    <input type="number"  formControlName="salary" class="form-control">    
 </div>
 
 
@@ -48,7 +48,7 @@
    salary is required
    </div>
 
-<input type="submit" value="Submit">    
+<input type="submit" value="Submit" class="btn btn-primary btn-lg">    
 </form>
 <br>
 

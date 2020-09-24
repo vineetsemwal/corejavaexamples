@@ -1,10 +1,11 @@
 <h3>User details</h3>
 <form #idform=ngForm (ngSubmit)=findUser(idform) >
 
+  <div class="form-group">
   <label>User Id</label>
-  <input type="number" name="userid"   ngModel>
-
-  <input type="submit" value="Search">
+  <input type="number" name="userid"   ngModel class="form-control">
+</div>
+  <input type="submit" value="Search" class="btn btn-success">
 </form>
 <br>
 

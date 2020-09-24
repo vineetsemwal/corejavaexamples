@@ -1,38 +1,50 @@
-<label>provide title of app </label>
-<input type="text" [(ngModel)]=title name="titleField" >
-<h1>
-Welcome to {{title}}
-</h1>
-<br>
-Inside Parent , before user details component rendered 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Dxc Training</a>
+    
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-support">
+    
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbar-support">
+    <ul class="navbar-nav">
+    
+        <li class="nav-item">
+    <a class="nav-link" href="#" routerLink="user-details">User Details</a>
+    
+        </li>
+    
+        
+        <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="user-list">User list</a>
+            
+        </li>
+    
+                
+        <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="add-user">Add User</a>
+            
+         </li>
 
+         <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="adduser-codedriven">Code driven Add User</a>
+          
+       </li>
+       
+
+    </ul>
+    </div>
+    </nav>
+
+
+
+<div class="container">
+<div class="row">
+<div class="col-md-9">
 <h1>User management</h1>
-
-<br>
-
-
-<a href="" routerLink="add-user">Add User</a>
-<br>
-
-<a href="" routerLink="adduser-codedriven">Add User Code dtiven</a>
-<br>
-
-<a href="" routerLink="user-details">User Details</a>
-
-<br>
-
-<a href="" routerLink="user-details/1">User details with id 1</a>
-
-<br>
-<a href="" routerLink="user-details/2">User details with id 2</a>
-<br>
-<a href="" routerLink="user-details/3">User details with id 3</a>
-
-<br>
-<a href="" routerLink="user-list">User List </a>
-
+<div style="margin-top: 20px;margin-bottom: 20px;">
 <router-outlet></router-outlet>
-<br>
-Inside Parent , after user details component rendered 
-
-
+</div>
+</div>
+</div>
+</div>

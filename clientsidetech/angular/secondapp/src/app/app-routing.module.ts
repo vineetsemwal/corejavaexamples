@@ -12,6 +12,10 @@ const routes: Routes = [
     component:UserDetailsComponent
   },
   {
+    path:'user-details',
+    component:UserDetailsComponent
+  },
+  {
     path: 'add-user',
     component:AddUserComponent
   },
