@@ -11,6 +11,7 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { UserService } from './service/userservice';
 import { AdduserCodedrivenComponent } from './adduser-codedriven/adduser-codedriven.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SubstringPipe,
     SmallestPipe,
     AddUserComponent,
-    AdduserCodedrivenComponent
+    AdduserCodedrivenComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
