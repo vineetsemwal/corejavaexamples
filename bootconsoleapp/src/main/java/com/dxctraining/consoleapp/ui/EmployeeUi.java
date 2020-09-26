@@ -27,7 +27,7 @@ public class EmployeeUi {
             employee2 = service.save(employee2);
 
             int id1 = employee1.getId();
-            Employee fetched1 = service.findEmployeeById(78776);
+            Employee fetched1 = service.findEmployeeById(id1);
             System.out.println("fetcehd employee =" + fetched1.getName() + " " + fetched1.getAge() + " " + fetched1.getSalary());
 
             Employee fetched2 = service.findEmployeeByName("vineel");
