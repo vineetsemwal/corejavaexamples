@@ -7,6 +7,7 @@ import com.dxctraining.hotelmgt.customermgt.dto.RoomDto;
 import com.dxctraining.hotelmgt.customermgt.entities.Customer;
 import com.dxctraining.hotelmgt.customermgt.service.ICustomerService;
 import com.dxctraining.hotelmgt.customermgt.util.CustomerUtil;
+import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import javax.validation.Valid;
 @RequestMapping("/customers")
 @RestController
 public class CustomerController {
+    private static final Logger Loger= LoggerFactory.getLogger(CustomerController.class);
 
     @Autowired
     private ICustomerService service;

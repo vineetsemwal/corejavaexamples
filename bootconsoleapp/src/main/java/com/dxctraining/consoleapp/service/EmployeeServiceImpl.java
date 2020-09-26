@@ -3,6 +3,8 @@ package com.dxctraining.consoleapp.service;
 import com.dxctraining.consoleapp.dao.IEmployeeDao;
 import com.dxctraining.consoleapp.entities.Employee;
 import com.dxctraining.consoleapp.exceptions.InvalidArgumentException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,11 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class EmployeeServiceImpl implements IEmployeeService{
 
+    private static final Logger Log= LoggerFactory.getLogger(EmployeeServiceImpl.class);
+
     @Autowired
     private IEmployeeDao dao;
 
     @Override
     public Employee findEmployeeById(int id) {
+       Log.info("***service class,inside findEmployeeById ,id="+id);
        Employee employee= dao.findEmployeeById(id);
         return employee;
     }
