@@ -1,0 +1,12 @@
+
+<div *ngFor="let c of customers">
+id={{c.id}}
+name={{c.name}}
+role={{c.role}} 
+</div>
+
+<div *ngIf="errMsg!=null">
+{{errMsg}}
+</div>
+
+<router-outlet></router-outlet>
