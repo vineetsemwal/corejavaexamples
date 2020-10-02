@@ -1,0 +1,12 @@
+
+<button (click)=getUser()>Get User</button>
+
+<div *ngIf="user!=undefined">
+
+    {{user.username}}
+
+    {{
+        getDate(user.millis)
+    }}
+
+</div>
