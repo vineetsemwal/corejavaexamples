@@ -13,7 +13,7 @@
         <slf4j.version>1.7.26</slf4j.version>
         <log4j.version>1.7.26</log4j.version>
         <hibernate.version>5.3.10.Final</hibernate.version>
-        <mysql-driver.version>8.0.21</mysql-driver.version>
+        <mysql-driver.version>8.0.28</mysql-driver.version>
     </properties>
 
     <dependencies>
